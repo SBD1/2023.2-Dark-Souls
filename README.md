@@ -1,14 +1,14 @@
 # 2023.2-Dark-Souls
 
 <div align="center">
-<img src="./images/image.jpg" />
+<img src="./images/hades_banner.png" />
 </div>
 
 ## O Projeto
 
 <div>
 <p>
-    O projeto em questão tem como objetivo criar um jogo inspirado no universo de XXXX, a qual utilizaremoiz conceitos aprendidos na disciplina Sistema de Banco de Dados 1 - FGA UnB.
+    O projeto em questão tem como objetivo criar um jogo inspirado no universo do jogo hades, a qual utilizaremoiz conceitos aprendidos na disciplina Sistema de Banco de Dados 1 - FGA UnB.
 </p>
 </div>
 
