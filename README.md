@@ -6,7 +6,7 @@
 
 ## O Projeto
 
-<div align="center">
+<div>
 <p>
     O projeto em questão tem como objetivo criar um jogo inspirado no universo de XXXX, a qual utilizaremoiz conceitos aprendidos na disciplina Sistema de Banco de Dados 1 - FGA UnB.
 </p>
