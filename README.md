@@ -1,4 +1,4 @@
-# 2023.2-Dark-Souls
+# 2023.2-Hades
 
 <div align="center">
 <img src="./images/hades_banner.png" />
@@ -20,6 +20,6 @@
 | <a href="github.com/GuilhermeBES">Guilherme Basílio do Espirito Santo</a> | 160007615 |
 | <a href="github.com/HacKairos">Joao Lucas Pinto Vasconcelos</a> | 190089601 |
 
-## Executando o projeto
+## Executando o Projeto
 
 
