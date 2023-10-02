@@ -1,4 +1,4 @@
-## Modelo Relacional (MERL)
+# Modelo Relacional (MERL)
 
 <div>
 <p>O modelo relacional(MERL) busca fornercer apoio visual a modelagem relacional desenvolvida, nela pode-se encontrar as entidades, atributos e um melhor visualização da interação entre as entidades através de um fluxo mais intuitivo.</p>
@@ -11,7 +11,7 @@
 <p>O diagra com mais detalhes e maior qualidade pode ser encontrado em <a href="https://github.com/SBD1/2023.2-Hades/blob/main/images/MER.svg">diagrama</a>.</p>
 </div>
 
-## Histórico de versão 
+# Histórico de versão 
 
 | Data | Versão | Descrição | Autores |
 |:------:|:--------:|-----------|-------|
