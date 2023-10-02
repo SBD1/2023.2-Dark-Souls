@@ -5,7 +5,7 @@
 <p>O diagrama em questão desenvolvido pode ser encontrado em Figura 1.</p>
 
 <div style="text-align: center;">
-    <img src=../images/MER.jpg>
+    <img src=../images/MER.png>
     <p><strong>Figura 1</strong>: MERL do jogo inspirado no universo do jogo Hades, Fonte: Autores.</p>
 </div>
 <p>O diagra com mais detalhes e maior qualidade pode ser encontrado em <a href="https://github.com/SBD1/2023.2-Hades/blob/main/images/MER.svg">diagrama</a>.</p>
