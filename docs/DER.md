@@ -1,4 +1,4 @@
-## **Diagrama Entidade-Relacionamento (DER)**
+# Diagrama Entidade-Relacionamento (DER)
 
 <div>
 <p>O Diagrama Entidade Relacionamento (DER) é apresenta componentes pré-estabelecidos por um padrão, componentes estes que representam visualmente os itens de um modelo entidade-relacionamento (MER). A importância de realizar esta diagramação é fornecer apoio visual da estruturação do banco de dados e disposição dos dados armazenados.</p>
@@ -11,7 +11,7 @@
 <p>O diagrama com mais detalhes e maior qualidade pode ser encontrado em <a href="https://github.com/SBD1/2023.2-Hades/blob/main/images/DER.svg">diagrama</a>.</p>
 </div>
 
-## Histórico de versão 
+# Histórico de versão 
 
 | Data | Versão | Descrição | Autores |
 |:------:|:--------:|-----------|-------|
