@@ -4,6 +4,7 @@ Um dicionário de dados em bancos de dados relacionais é uma coleção de dados
 
 O dicionário de dados é essencial para que os desenvolvedores do banco de dados entendam a sua estrutura e possam trabalhar com os dados de forma eficaz e segura. Ele orienta a manipulação e o gerenciamento dos dados no banco de dados relacional, permitindo uma melhor manutenção.
 
+Para a confecção das tabelas foi utilizado a ferramento spreadsheets e o acesso ao dicionario pode ser encontrado em: [Link](https://docs.google.com/spreadsheets/d/1YHAq0cNd358JixKRJPjnu7olGClyv7xFmheFlepW34Q/edit?usp=sharing) 
 
 
 ## Entidades

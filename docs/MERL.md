@@ -8,7 +8,7 @@
     <img src=../images/MER.png>
     <p><strong>Figura 1</strong>: MERL do jogo inspirado no universo do jogo Hades, Fonte: Autores.</p>
 </div>
-<p>O diagrama com mais detalhes e maior qualidade pode ser encontrado em <a href="https://github.com/SBD1/2023.2-Hades/blob/main/images/MER.svg">diagrama</a>.</p>
+<p>O diagrama com mais detalhes e maior qualidade pode ser encontrado em <a href="https://app.diagrams.net/#G1B4XW8RS98h-mIsDuW4clVUO8MYiHhKd8">diagrama</a>.</p>
 </div>
 
 # Histórico de versão 
