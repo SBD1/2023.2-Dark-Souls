@@ -24,7 +24,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 ![imagem 2](../images/dicionario/d2.png)
 
 <center> <figcaption>
-    <b>Figura 1:
+    <b>Figura 2:
      Entidade NPC</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
@@ -51,7 +51,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 ![imagem 5](../images/dicionario/d5.png)
 
 <center> <figcaption>
-    <b>Figura 1:
+    <b>Figura 5:
      Entidade Jogador</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
@@ -78,7 +78,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 ![imagem 8](../images/dicionario/d8.png)
 
 <center> <figcaption>
-    <b>Figura 1:
+    <b>Figura 8:
      Entidade Loja</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
@@ -96,7 +96,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 ![imagem 10](../images/dicionario/d10.png)
 
 <center> <figcaption>
-    <b>Figura 1:
+    <b>Figura 10:
      Entidade Roma</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
