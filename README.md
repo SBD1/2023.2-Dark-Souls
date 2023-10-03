@@ -21,6 +21,10 @@
 | <a href="github.com/HacKairos">Joao Lucas Pinto Vasconcelos</a> | 190089601 |
 | <a href="https://github.com/Arthurlima544">Arthur josé Nascimento de Lima</a> | 190084600 |
 
+## Entregas
+
+### [Primeira entrega](https://youtu.be/GX8d1hQ-mIk)
+
 ## Executando o Projeto
 
 
