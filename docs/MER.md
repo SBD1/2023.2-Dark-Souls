@@ -65,40 +65,40 @@ Uma sala de Npc contem apenas um NPC.<br>
 Uma sala de Loja contem apenas um NPC.<br>
 **Cardinalidade** (1:1)
 
-**Sala** **Loja** Vende zero ou uma **BençãosPlayer**
-Uma Sala loja pode vender até uma Benção para o player.
+**Sala** **Loja** Vende zero ou uma **BençãosPlayer**<br>
+Uma Sala loja pode vender até uma Benção para o player.<br>
 **Cardinalidade** (1:0,1)
 
-**Sala** **Loja** Cambia com um **BençãosPlayer**
-Uma Sala loja Cambia com um InventarioPlayer.
+**Sala** **Loja** Cambia com um **BençãosPlayer**<br>
+Uma Sala loja Cambia com um InventarioPlayer.<br>
 **Cardinalidade** (1:1)
 
-**Personagem** **PC** Possui de Uma a Seis **Armas**
-Um Personagem Pc pode ter de uma a seis armas.
+**Personagem** **PC** Possui de Uma a Seis **Armas**<br>
+Um Personagem Pc pode ter de uma a seis armas.<br>
 **Cardinalidade** (1:1,6)
 
-**Personagem** **PC** Possui um **InventarioPlayer**
-Um personagem Possui Um inventario.
+**Personagem** **PC** Possui um **InventarioPlayer**<br>
+Um personagem Possui Um inventario.<br>
 **Cardinalidade** (1:1)
 
-**Personagem** **PC** Possui Zero a N **BençãosPlayer**
-Um Personagem Pc pode ter de zero a N Bençãos.
+**Personagem** **PC** Possui Zero a N **BençãosPlayer**<br>
+Um Personagem Pc pode ter de zero a N Bençãos.<br>
 **Cardinalidade** (1:0,N)
 
-**BençãosPlayer** Conquista **Bençãos**
-Bençãos são conquistadas em BençãosPlayer.
+**BençãosPlayer** Conquista **Bençãos**<br>
+Bençãos são conquistadas em BençãosPlayer.<br>
 **Cardinalidade** (1:0,N)
 
-**Personagem** **Inimigo** **Boss** Governa uma **Sala** **BossRoom**
-Um personagem boss governa uma determinada sala.
+**Personagem** **Inimigo** **Boss** Governa uma **Sala** **BossRoom**<br>
+Um personagem boss governa uma determinada sala.<br>
 **Cardinalidade** (1:1)
 
-**Personagem** **Inimigo** **Boss** Vive em um **Mundo**
-Um personagem boss Vive em um determinado Mundo.
+**Personagem** **Inimigo** **Boss** Vive em um **Mundo**<br>
+Um personagem boss Vive em um determinado Mundo.<br>
 **Cardinalidade** (1:1)
 
-**Personagem** **Inimigo** **Boss** Dropa uma **Arma**
-Um personagem boss Dropa uma arma ao ser derrotado.
+**Personagem** **Inimigo** **Boss** Dropa uma **Arma**<br>
+Um personagem boss Dropa uma arma ao ser derrotado.<br>
 **Cardinalidade** (1:1)
 
 
