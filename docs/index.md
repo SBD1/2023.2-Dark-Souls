@@ -2,6 +2,7 @@
 
 <div align="center">
 <img src="images/hades_banner.png" />
+
 </div>
 
 ## *O Projeto*

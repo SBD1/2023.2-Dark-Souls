@@ -5,7 +5,7 @@
 <p>O diagrama em questão desenvolvido pode ser encontrado em Figura 1.</p>
 
 <div style="text-align: center;">
-    <img src=../images/DER.jpg>
+    <img src=../../images/DER.jpg>
     <p><strong>Figura 1</strong>: DER do jogo inspirado no universo do jogo Hades, Fonte: Autores.</p>
 </div>
 <p>O diagrama com mais detalhes e maior qualidade pode ser encontrado em <a href="https://github.com/SBD1/2023.2-Hades/blob/main/images/DER.svg">diagrama</a>.</p>

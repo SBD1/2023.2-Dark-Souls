@@ -13,7 +13,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 ### Entidade Mundo
 
 
-![imagem 1](../images/dicionario/d1.png)
+![imagem 1](../../images/dicionario/d1.png)
 
 <center> <figcaption>
     <b>Figura 1:
@@ -22,7 +22,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Entidade NPC
-![imagem 2](../images/dicionario/d2.png)
+![imagem 2](../../images/dicionario/d2.png)
 
 <center> <figcaption>
     <b>Figura 2:
@@ -31,7 +31,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Entidade Boss
-![imagem 3](../images/dicionario/d3.png)
+![imagem 3](../../images/dicionario/d3.png)
 
 <center> <figcaption>
     <b>Figura 3:
@@ -40,7 +40,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Entidade Sala
-![imagem 4](../images/dicionario/d4.png)
+![imagem 4](../../images/dicionario/d4.png)
 
 <center> <figcaption>
     <b>Figura 4:
@@ -49,7 +49,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Entidade Jogador
-![imagem 5](../images/dicionario/d5.png)
+![imagem 5](../../images/dicionario/d5.png)
 
 <center> <figcaption>
     <b>Figura 5:
@@ -58,7 +58,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Entidade Bencao
-![imagem 6](../images/dicionario/d6.png)
+![imagem 6](../../images/dicionario/d6.png)
 
 <center> <figcaption>
     <b>Figura 6:
@@ -67,7 +67,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Entidade Recompensa
-![imagem 7](../images/dicionario/d7.png)
+![imagem 7](../../images/dicionario/d7.png)
 
 <center> <figcaption>
     <b>Figura 7:
@@ -76,7 +76,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Entidade Loja
-![imagem 8](../images/dicionario/d8.png)
+![imagem 8](../../images/dicionario/d8.png)
 
 <center> <figcaption>
     <b>Figura 8:
@@ -94,7 +94,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Entidade Roma
-![imagem 10](../images/dicionario/d10.png)
+![imagem 10](../../images/dicionario/d10.png)
 
 <center> <figcaption>
     <b>Figura 10:
