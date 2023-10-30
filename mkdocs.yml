@@ -33,7 +33,6 @@ theme:
     - navigation.indexes
 
 nav: 
-  - Projeto: index.md
   - Modelagem: 
     - Modelo Entidade-Relacionamento (MER): Modulo-1/MER.md
     - Diagrama Entidade-Relacionamento (DER): Modulo-1/DER.md

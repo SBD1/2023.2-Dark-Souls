@@ -1,11 +1,17 @@
-# **2023.2-Hades**
+---
+hide:
+  - navigation
+  - toc
+---
+
+# **Hades**
 
 <div align="center">
 <img src="images/hades_banner.png" />
 
 </div>
 
-## *O Projeto*
+## Descrição
 
 <div>
 <p>
@@ -15,11 +21,11 @@
 
 ## Participantes
 
-| Nome | Matrícula |
-|--------------|-----------|
+| Nome                                                                          | Matrícula |
+| ----------------------------------------------------------------------------- | --------- |
 | <a href="https://www.github.com/frmiza">Francisco Mizael Santos da Silva </a> | 180113321 |
-| <a href="github.com/GuilhermeBES">Guilherme Basílio do Espirito Santo</a> | 160007615 |
-| <a href="github.com/HacKairos">Joao Lucas Pinto Vasconcelos</a> | 190089601 |
+| <a href="github.com/GuilhermeBES">Guilherme Basílio do Espirito Santo</a>     | 160007615 |
+| <a href="github.com/HacKairos">Joao Lucas Pinto Vasconcelos</a>               | 190089601 |
 | <a href="https://github.com/Arthurlima544">Arthur josé Nascimento de Lima</a> | 190084600 |
 
 ## Entregas
