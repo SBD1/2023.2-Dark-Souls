@@ -13,7 +13,10 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 ### Mundo
 
 
-![imagem 1](../images/dicionario/d1.png)
+| Nome      | Descrição                                                   | Tipo de Dado | Tamanho | Restrições  de Domínio  |
+|-----------|-------------------------------------------------------------|--------------|---------|-------------------------|
+| ID   | Identificador Para o mundo                                  | Int          |         | PK                      |
+| Nome | indica o nome daquele mundo que será exibido para o jogador | String       | 255     | Unique / Not Null       |
 
 <center> <figcaption>
     <b>Figura 1:
@@ -22,7 +25,14 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### NPC
-![imagem 2](../images/dicionario/d2.png)
+
+| Nome    | Descrição                                            | Tipo de Dado | Tamanho | Restrições  de Domínio  |
+|---------|------------------------------------------------------|--------------|---------|-------------------------|
+| ID   | Identificador Para o NPC                             | Int          |         | PK                      |
+| Nome | indica o nome do npc que será exibido para o Jogador | String       | 255     | Unique / Not Null       |
+| Mundo_ID | Identificador Para o Mundo                           | String       | 255     | FK                      |
+| Funcao  | indica o que o NPC fará em determinada Sala          | Strring      | 255     | Not Null                |
+| Descricao_Completa  | Apresenta uma descricao para o NPC          | Strring      | 255     | Not Null                |
 
 <center> <figcaption>
     <b>Figura 2:
@@ -30,8 +40,14 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
 
-### Boss
-![imagem 3](../images/dicionario/d3.png)
+#### Chaves estrangeiras de NPC: 'mundo_id' para `Mundo`
+
+### Chefe
+| Nome     | Descrição                                                 | Tipo de Dado | Tamanho | Restrições  de Domínio  |
+|----------|-----------------------------------------------------------|--------------|---------|-------------------------|
+| ID   | Identificador Para o Boss                                 | Int          |         | PK                      |
+| Nome | Informação sobre o Boss no jogo que será exibido no mundo | String       | 255     | Not Null                |
+| Mundo_ID  | Identificador Para o Mundo                                | String       | 255     | FK                      |
 
 <center> <figcaption>
     <b>Figura 3:
@@ -39,8 +55,16 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
 
+#### Chaves estrangeiras de Chefe: 'mundo_id' para `Mundo`
+
 ### Sala
-![imagem 4](../images/dicionario/d4.png)
+| Nome      | Descrição                                                   | Tipo de Dado | Tamanho | Restrições  de Domínio  |
+|-----------|-------------------------------------------------------------|--------------|---------|-------------------------|
+| ID    | Identificador Para o SalaID                                 | Int          |         | PK                      |
+| Tipo  | informa a origem de uma Sala (Exemplo Fogo, Terra, Nublado) | String       | 255     | Not Null                |
+| Descricao | Texto exibido para o jogador sobre informações da sala      | String       | 255     | Not Null                |
+| EhChefe    | indica que na sala há um Boss                               | bool         |         | Not Null                |
+| EhNPC     | indica que na sala há um NPC                                | bool         |         | Not Null                |
 
 <center> <figcaption>
     <b>Figura 4:
@@ -48,8 +72,14 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
 
+#### Chaves estrangeiras de Sala: 'mundo_id' para `Mundo`
+
 ### Jogador
-![imagem 5](../images/dicionario/d5.png)
+| Nome        | Descrição                               | Tipo de Dado | Tamanho | Restrições  de Domínio  |
+|-------------|-----------------------------------------|--------------|---------|-------------------------|
+| JogadorID   | Identificador para o jogador            | int          |         | PK                      |
+| NomeJogador | Descreve o nome para um jogador         | String       | 255     | Not Null                |
+| Status      | Descreve se o jogador está ativo ou não | Bool         | 255     | Not Null                |
 
 <center> <figcaption>
     <b>Figura 5:
@@ -58,7 +88,16 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Bencao
-![imagem 6](../images/dicionario/d6.png)
+
+| Nome             | Descrição                                                  | Tipo de Dado | Tamanho | Restrições  de Domínio  |
+|------------------|------------------------------------------------------------|--------------|---------|-------------------------|
+| BencaoID         | Identificador Para o Bencao                                | int          |         | PK                      |
+| NomeBencao       | Informação sobre o Nome da Bencao do Jogo                  | String       | 255     | Not Null                |
+| raridade         | indica uma raridade para o poder (raro, muito raro, comum) | String       | 255     | Not Null              |
+| habilidadeBencao | Indica o pré-requisito sobre a bencao                      | String       | 255     | Not Null                |
+| Nívelbencao      | indica o nível que é necessário para adiquirir a bencao    | Int          |         | Not Null, > 0           |
+| SalaID           | indica o indentificador da sala                            | String       | 255     | FK                      |
+| JogadorID        | Indica o identificador do Jogador                          | String       | 255     | FK                      |
 
 <center> <figcaption>
     <b>Figura 6:
@@ -67,7 +106,14 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Recompensa
-![imagem 7](../images/dicionario/d7.png)
+
+| Nome               | Descrição                                                        | Tipo de Dado | Tamanho | Restrições  de Domínio  |
+|--------------------|------------------------------------------------------------------|--------------|---------|-------------------------|
+| TipoDeRecompensaID | Indetificador para a recompensa (cada recompensa possui um tipo) | Int          |         | PK / Not Null           |
+| Ouro               | Quantidade de Ouro necessário para a compra de uma recompensa    | Int          |         | Not Null                |
+| Orbe               | Indica o item para upar o Personagem                             | String       | 255     | Not Null                |
+| vida               | Quantidade de Vida restaurada                                    | int          |         | Not Null                |
+| SalaID             | Indetificador para a Sala                                        | String       | 255     | FK                      |
 
 <center> <figcaption>
     <b>Figura 7:
@@ -76,7 +122,15 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Loja
-![imagem 8](../images/dicionario/d8.png)
+
+| Nome            | Descrição                                        | Tipo de Dado | Tamanho | Restrições  de Domínio  |
+|-----------------|--------------------------------------------------|--------------|---------|-------------------------|
+| LojaID          | Identificador Para a Loja                        | Int          |         | PK                      |
+| BencaoAleatoria | Informação sobre o Preco de uma benção aleatória | int          |         | Not Null                |
+| Ouro            | Mostra o ouro atual do jogador                   | int          |         | Not Null                |
+| vida            | Quantidade de Vida restaurada                    | int          |         | Not Null                |
+| Orbe            | Indica o item para upar o Personagem             | String       | 255     | Not Null                |
+| SalaID          | Identificador da Sala                            | String       | 255     | Not Null                |
 
 <center> <figcaption>
     <b>Figura 8:
@@ -85,7 +139,11 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 </figcaption> </center>
 
 ### Arma
-![imagem 9](../images/dicionario/d9.png)
+| Nome      | Descrição                 | Tipo de Dado | Tamanho | Restrições  de Domínio  |
+|-----------|---------------------------|--------------|---------|-------------------------|
+| ArmaID    | Identificador da arma     | Int          |         | PK                      |
+| NomeArma  | indica o nome da Arma     | String       | 255     | Not Null                |
+| JogadorID | Indentificador do Jogador | String       | 255     | FK                      |
 
 <center> <figcaption>
     <b>Figura 9:
@@ -93,18 +151,9 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
 
-### Roma
-![imagem 10](../images/dicionario/d10.png)
 
-<center> <figcaption>
-    <b>Figura 10:
-     Entidade Roma</b>
-    <br><small>Fonte:Propria</small>
-</figcaption> </center>
-
-
-
-
+## Histórico de Versão
 | Data | Versão | Descrição | Autores |
 |:------:|:--------:|-----------|-------|
 | 02/10/2023 | 1.0 | Criação do dicionário de dados | Francisco Mizael Santos, Guilherme Basílio do Espirito Santo, Joao Lucas Pinto Vasconcelos, Arthur Lima |
+| 28/10/2023 | 1.1 | Nomalizando os dados | Francisco Mizael Santos, Guilherme Basílio do Espirito Santo, Joao Lucas Pinto Vasconcelos, Arthur Lima |
