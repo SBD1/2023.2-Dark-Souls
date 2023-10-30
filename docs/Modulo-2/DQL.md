@@ -99,3 +99,8 @@ WHERE nome = 'Stygius';
 SELECT arma.id_arma, arma.nome, arma.tipo, arma.data_criacao, arma.data_atualizacao
 FROM arma;
 ```
+## Histórico de versão 
+
+|    Data    | Versão | Descrição                   | Autores                                                      |
+| :--------: | :----: | --------------------------- | ------------------------------------------------------------ |
+| 30/10/2023 | `1.0`  | Criação da primeira versão. | [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES) |

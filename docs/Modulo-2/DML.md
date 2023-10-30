@@ -119,3 +119,9 @@ INSERT INTO personagem (nome, pc_id)
 VALUES
   ('O jogador', 1);
 ```
+
+## Histórico de versão 
+
+|    Data    | Versão | Descrição                   | Autores                                                      |
+| :--------: | :----: | --------------------------- | ------------------------------------------------------------ |
+| 30/10/2023 | `1.0`  | Criação da primeira versão. | [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES) |

@@ -13,7 +13,7 @@
 
 
 
-# Histórico de versão 
+## Histórico de versão 
 
 | Data | Versão | Descrição | Autores |
 |:------:|:--------:|-----------|-------|

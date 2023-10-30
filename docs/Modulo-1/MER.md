@@ -101,6 +101,7 @@ Um personagem boss Vive em um determinado Mundo.<br>
 Um personagem boss Dropa uma arma ao ser derrotado.<br>
 **Cardinalidade** (1:1)
 
+## Histórico de versão 
 
 | Data | Versão | Descrição | Autores |
 |:------:|:--------:|-----------|-------|

@@ -57,3 +57,9 @@ CREATE TABLE arma ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL U
 ```sql
 CREATE TABLE inventario ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL, tipo VARCHAR(255) NOT NULL CHECK (tipo IN (‘Item’, ‘Arma’, ‘Bencao’)), jogador_id INT NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (jogador_id) REFERENCES pc (id) );
 ```
+
+## Histórico de versão 
+
+|    Data    | Versão | Descrição                   | Autores                                                      |
+| :--------: | :----: | --------------------------- | ------------------------------------------------------------ |
+| 30/10/2023 | `1.0`  | Criação da primeira versão. | [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES) |

@@ -11,7 +11,7 @@
 <p>O diagrama com mais detalhes e maior qualidade pode ser encontrado em <a href="https://app.diagrams.net/#G1B4XW8RS98h-mIsDuW4clVUO8MYiHhKd8">diagrama</a>.</p>
 </div>
 
-# Histórico de versão 
+## Histórico de versão 
 
 | Data | Versão | Descrição | Autores |
 |:------:|:--------:|-----------|-------|

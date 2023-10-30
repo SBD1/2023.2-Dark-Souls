@@ -74,3 +74,9 @@ As operações a seguir foram criadas com base nos comandos SELECT descritos no 
 ```
 π(id_arma, nome, tipo, data_criacao, data_atualizacao)(arma)
 ```
+
+## Histórico de versão 
+
+|    Data    | Versão | Descrição                   | Autores                                                      |
+| :--------: | :----: | --------------------------- | ------------------------------------------------------------ |
+| 30/10/2023 | `1.0`  | Criação da primeira versão. | [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES) |
