@@ -12,6 +12,8 @@
         <link rel="prev" href="../ModeloRelacional/">
       
       
+        <link rel="next" href="../DFS/">
+      
       
       <link rel="icon" href="../../images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
@@ -227,6 +229,26 @@
   
 
       
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Modulo-2/DDL/" class="md-tabs__link">
+          
+  
+    
+  
+  SQL
+
+        </a>
+      </li>
+    
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -280,6 +302,8 @@
   
     
     
+      
+        
       
         
       
@@ -459,8 +483,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#boss" class="md-nav__link">
-    Boss
+  <a href="#chefe" class="md-nav__link">
+    Chefe
   </a>
   
 </li>
@@ -507,15 +531,15 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#roma" class="md-nav__link">
-    Roma
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    Histórico de Versão
+  </a>
   
 </li>
       
@@ -523,6 +547,162 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DFS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dependências Funcionais
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modulo-2/DDL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Definition Language (DDL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modulo-2/DML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Manipulation Language (DML)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modulo-2/DQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Query Language (DQL)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Modulo-2/Algebra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Álgebra Relacional
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -589,8 +769,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#boss" class="md-nav__link">
-    Boss
+  <a href="#chefe" class="md-nav__link">
+    Chefe
   </a>
   
 </li>
@@ -637,15 +817,15 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#roma" class="md-nav__link">
-    Roma
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    Histórico de Versão
+  </a>
   
 </li>
       
@@ -676,90 +856,471 @@
 <h2 id="entidades">Entidades</h2>
 <p>A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.</p>
 <h3 id="mundo">Mundo</h3>
-<p><img alt="imagem 1" src="../../images/dicionario/d1.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Tipo de Dado</th>
+<th>Tamanho</th>
+<th>Restrições  de Domínio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>Identificador Para o mundo</td>
+<td>Int</td>
+<td></td>
+<td>PK</td>
+</tr>
+<tr>
+<td>Nome</td>
+<td>indica o nome daquele mundo que será exibido para o jogador</td>
+<td>String</td>
+<td>255</td>
+<td>Unique / Not Null</td>
+</tr>
+</tbody>
+</table>
 <p><center> <figcaption>
     <b>Figura 1:
      Entidade Mundo</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center></p>
 <h3 id="npc">NPC</h3>
-<p><img alt="imagem 2" src="../../images/dicionario/d2.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Tipo de Dado</th>
+<th>Tamanho</th>
+<th>Restrições  de Domínio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>Identificador Para o NPC</td>
+<td>Int</td>
+<td></td>
+<td>PK</td>
+</tr>
+<tr>
+<td>Nome</td>
+<td>indica o nome do npc que será exibido para o Jogador</td>
+<td>String</td>
+<td>255</td>
+<td>Unique / Not Null</td>
+</tr>
+<tr>
+<td>Mundo_ID</td>
+<td>Identificador Para o Mundo</td>
+<td>String</td>
+<td>255</td>
+<td>FK</td>
+</tr>
+<tr>
+<td>Funcao</td>
+<td>indica o que o NPC fará em determinada Sala</td>
+<td>Strring</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>Descricao_Completa</td>
+<td>Apresenta uma descricao para o NPC</td>
+<td>Strring</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+</tbody>
+</table>
 <p><center> <figcaption>
     <b>Figura 2:
      Entidade NPC</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center></p>
-<h3 id="boss">Boss</h3>
-<p><img alt="imagem 3" src="../../images/dicionario/d3.png" /></p>
+<h3 id="chefe">Chefe</h3>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Tipo de Dado</th>
+<th>Tamanho</th>
+<th>Restrições  de Domínio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>Identificador Para o Boss</td>
+<td>Int</td>
+<td></td>
+<td>PK</td>
+</tr>
+<tr>
+<td>Nome</td>
+<td>Informação sobre o Boss no jogo que será exibido no mundo</td>
+<td>String</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>Mundo_ID</td>
+<td>Identificador Para o Mundo</td>
+<td>String</td>
+<td>255</td>
+<td>FK</td>
+</tr>
+</tbody>
+</table>
 <p><center> <figcaption>
     <b>Figura 3:
      Entidade Boss</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center></p>
 <h3 id="sala">Sala</h3>
-<p><img alt="imagem 4" src="../../images/dicionario/d4.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Tipo de Dado</th>
+<th>Tamanho</th>
+<th>Restrições  de Domínio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>Identificador Para o SalaID</td>
+<td>Int</td>
+<td></td>
+<td>PK</td>
+</tr>
+<tr>
+<td>Tipo</td>
+<td>informa a origem de uma Sala (Exemplo Fogo, Terra, Nublado)</td>
+<td>String</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>Descricao</td>
+<td>Texto exibido para o jogador sobre informações da sala</td>
+<td>String</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>EhChefe</td>
+<td>indica que na sala há um Boss</td>
+<td>bool</td>
+<td></td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>EhNPC</td>
+<td>indica que na sala há um NPC</td>
+<td>bool</td>
+<td></td>
+<td>Not Null</td>
+</tr>
+</tbody>
+</table>
 <p><center> <figcaption>
     <b>Figura 4:
      Entidade Sala</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center></p>
 <h3 id="jogador">Jogador</h3>
-<p><img alt="imagem 5" src="../../images/dicionario/d5.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Tipo de Dado</th>
+<th>Tamanho</th>
+<th>Restrições  de Domínio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JogadorID</td>
+<td>Identificador para o jogador</td>
+<td>int</td>
+<td></td>
+<td>PK</td>
+</tr>
+<tr>
+<td>NomeJogador</td>
+<td>Descreve o nome para um jogador</td>
+<td>String</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Descreve se o jogador está ativo ou não</td>
+<td>Bool</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+</tbody>
+</table>
 <p><center> <figcaption>
     <b>Figura 5:
      Entidade Jogador</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center></p>
 <h3 id="bencao">Bencao</h3>
-<p><img alt="imagem 6" src="../../images/dicionario/d6.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Tipo de Dado</th>
+<th>Tamanho</th>
+<th>Restrições  de Domínio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BencaoID</td>
+<td>Identificador Para o Bencao</td>
+<td>int</td>
+<td></td>
+<td>PK</td>
+</tr>
+<tr>
+<td>NomeBencao</td>
+<td>Informação sobre o Nome da Bencao do Jogo</td>
+<td>String</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>raridade</td>
+<td>indica uma raridade para o poder (raro, muito raro, comum)</td>
+<td>String</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>habilidadeBencao</td>
+<td>Indica o pré-requisito sobre a bencao</td>
+<td>String</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>Nívelbencao</td>
+<td>indica o nível que é necessário para adiquirir a bencao</td>
+<td>Int</td>
+<td></td>
+<td>Not Null, &gt; 0</td>
+</tr>
+<tr>
+<td>SalaID</td>
+<td>indica o indentificador da sala</td>
+<td>String</td>
+<td>255</td>
+<td>FK</td>
+</tr>
+<tr>
+<td>JogadorID</td>
+<td>Indica o identificador do Jogador</td>
+<td>String</td>
+<td>255</td>
+<td>FK</td>
+</tr>
+</tbody>
+</table>
 <p><center> <figcaption>
     <b>Figura 6:
      Entidade Bencao</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center></p>
 <h3 id="recompensa">Recompensa</h3>
-<p><img alt="imagem 7" src="../../images/dicionario/d7.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Tipo de Dado</th>
+<th>Tamanho</th>
+<th>Restrições  de Domínio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TipoDeRecompensaID</td>
+<td>Indetificador para a recompensa (cada recompensa possui um tipo)</td>
+<td>Int</td>
+<td></td>
+<td>PK / Not Null</td>
+</tr>
+<tr>
+<td>Ouro</td>
+<td>Quantidade de Ouro necessário para a compra de uma recompensa</td>
+<td>Int</td>
+<td></td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>Orbe</td>
+<td>Indica o item para upar o Personagem</td>
+<td>String</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>vida</td>
+<td>Quantidade de Vida restaurada</td>
+<td>int</td>
+<td></td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>SalaID</td>
+<td>Indetificador para a Sala</td>
+<td>String</td>
+<td>255</td>
+<td>FK</td>
+</tr>
+</tbody>
+</table>
 <p><center> <figcaption>
     <b>Figura 7:
      Entidade Recompensa</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center></p>
 <h3 id="loja">Loja</h3>
-<p><img alt="imagem 8" src="../../images/dicionario/d8.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Tipo de Dado</th>
+<th>Tamanho</th>
+<th>Restrições  de Domínio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LojaID</td>
+<td>Identificador Para a Loja</td>
+<td>Int</td>
+<td></td>
+<td>PK</td>
+</tr>
+<tr>
+<td>BencaoAleatoria</td>
+<td>Informação sobre o Preco de uma benção aleatória</td>
+<td>int</td>
+<td></td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>Ouro</td>
+<td>Mostra o ouro atual do jogador</td>
+<td>int</td>
+<td></td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>vida</td>
+<td>Quantidade de Vida restaurada</td>
+<td>int</td>
+<td></td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>Orbe</td>
+<td>Indica o item para upar o Personagem</td>
+<td>String</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>SalaID</td>
+<td>Identificador da Sala</td>
+<td>String</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+</tbody>
+</table>
 <p><center> <figcaption>
     <b>Figura 8:
      Entidade Loja</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center></p>
 <h3 id="arma">Arma</h3>
-<p><img alt="imagem 9" src="../../images/dicionario/d9.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Tipo de Dado</th>
+<th>Tamanho</th>
+<th>Restrições  de Domínio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ArmaID</td>
+<td>Identificador da arma</td>
+<td>Int</td>
+<td></td>
+<td>PK</td>
+</tr>
+<tr>
+<td>NomeArma</td>
+<td>indica o nome da Arma</td>
+<td>String</td>
+<td>255</td>
+<td>Not Null</td>
+</tr>
+<tr>
+<td>JogadorID</td>
+<td>Indentificador do Jogador</td>
+<td>String</td>
+<td>255</td>
+<td>FK</td>
+</tr>
+</tbody>
+</table>
 <p><center> <figcaption>
     <b>Figura 9:
      Entidade Arma</b>
     <br><small>Fonte:Propria</small>
 </figcaption> </center></p>
-<h3 id="roma">Roma</h3>
-<p><img alt="imagem 10" src="../../images/dicionario/d10.png" /></p>
-<p><center> <figcaption>
-    <b>Figura 10:
-     Entidade Roma</b>
-    <br><small>Fonte:Propria</small>
-</figcaption> </center></p>
+<h2 id="historico-de-versao">Histórico de Versão</h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">Data</th>
 <th style="text-align: center;">Versão</th>
-<th>Descrição</th>
-<th>Autores</th>
+<th style="text-align: center;">Descrição</th>
+<th style="text-align: center;">Autores</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">02/10/2023</td>
-<td style="text-align: center;">1.0</td>
-<td>Criação do dicionário de dados</td>
-<td>Francisco Mizael Santos, Guilherme Basílio do Espirito Santo, Joao Lucas Pinto Vasconcelos, Arthur Lima</td>
+<td style="text-align: center;">23/09/2023</td>
+<td style="text-align: center;"><code>1.0</code></td>
+<td style="text-align: center;">Criação da primeira versão.</td>
+<td style="text-align: center;"><a href="https://github.com/frmiza">Francisco Mizael Santos</a>, <a href="https://github.com/GuilhermeBES">Guilherme Basílio do Espirito Santo</a>, <a href="https://github.com/HacKairos">Joao Lucas Pinto Vasconcelos</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">28/10/2023</td>
+<td style="text-align: center;">1.1</td>
+<td style="text-align: center;">Nomalizando os dados</td>
+<td style="text-align: center;"><a href="https://github.com/frmiza">Francisco Mizael Santos</a></td>
 </tr>
 </tbody>
 </table>
