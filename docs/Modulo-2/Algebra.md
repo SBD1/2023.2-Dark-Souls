@@ -8,7 +8,7 @@ Por exemplo, a operação de seleção (σ) filtra linhas em uma tabela com base
 
 ## Operações
 
-As operações a seguir foram criadas com base nos comandos SELECT descritos no documento DQL. Elas representam a tradução desses comandos para a Álgebra Relacional. Essas operações incluem seleção, projeção e produto cartesiano, que são usados para filtrar, selecionar e combinar dados, respectivamente.
+As operações a seguir foram criadas com base nos comandos SELECT descritos no [documento DQL](DQL.md). Elas representam a tradução desses comandos para a Álgebra Relacional. Essas operações incluem seleção, projeção e produto cartesiano, que são usados para filtrar, selecionar e combinar dados, respectivamente.
 
 1) **Recuperar todos os mundos**:
 ```
