@@ -40,3 +40,9 @@ nav:
     - Diagrama Entidade-Relacionamento (DER): Modulo-1/DER.md
     - Modelo Relacional: Modulo-1/ModeloRelacional.md
     - Dicíonario de Dados: Modulo-1/Dicionario_Dados.md
+    - Dependências Funcionais: Modulo-1/DFS.md
+  - SQL:
+    - Data Definition Language (DDL): Modulo-2/DDL.md
+    - Data Manipulation Language (DML): Modulo-2/DML.md
+    - Data Query Language (DQL): Modulo-2/DQL.md
+    - Álgebra Relacional: Modulo-2/Algebra.md
