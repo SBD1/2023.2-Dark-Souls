@@ -150,7 +150,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 
 ## Histórico de Versão
-|    Data    | Versão | Descrição                      | Autores                                                                                                 |
-| :--------: | :----: | ------------------------------ | ------------------------------------------------------------------------------------------------------- |
-| 02/10/2023 |  1.0   | Criação do dicionário de dados | Francisco Mizael Santos, Guilherme Basílio do Espirito Santo, Joao Lucas Pinto Vasconcelos, Arthur Lima |
-| 28/10/2023 |  1.1   | Nomalizando os dados           | Francisco Mizael Santos                                                                                 |
+|    Data    | Versão |          Descrição          |                                                                                          Autores                                                                                           |
+| :--------: | :----: | :-------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| 23/09/2023 | `1.0`  | Criação da primeira versão. | [Francisco Mizael Santos](https://github.com/frmiza), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES), [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos) |
+| 28/10/2023 |  1.1   |    Nomalizando os dados     |                                                                    [Francisco Mizael Santos](https://github.com/frmiza)                                                                    |

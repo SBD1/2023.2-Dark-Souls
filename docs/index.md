@@ -25,10 +25,6 @@ O projeto atual é uma iniciativa que busca desenvolver um jogo baseado no renom
 
 </center>
 
-## Entregas
-
-### [Primeira entrega](https://youtu.be/GX8d1hQ-mIk)
-
 ## Executando o Projeto
 
 
