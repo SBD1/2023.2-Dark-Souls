@@ -5,6 +5,8 @@ repo_url: https://github.com/SBD1/2023.2-Hades
 theme:
   name: material
   language: pt-BR
+  logo: images/favicon.png
+  favicon: images/favicon.png
   font:
     text: Roboto
   
@@ -25,14 +27,14 @@ theme:
     
   icon:
     repo: fontawesome/brands/github
-  logo: images/favicon.png
+    
   features:
     - header.autohide
     - navigation.tabs
     - navigation.top
     - navigation.indexes
 
-nav: 
+nav:
   - Modelagem: 
     - Modelo Entidade-Relacionamento (MER): Modulo-1/MER.md
     - Diagrama Entidade-Relacionamento (DER): Modulo-1/DER.md
