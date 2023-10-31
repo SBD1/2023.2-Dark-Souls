@@ -93,11 +93,27 @@ CREATE TABLE npc_room (
   data_criacao DATETIME NOT NULL,
   data_atualizacao DATETIME NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (sala_id) REFERENCES sala (id)
+  FOREIGN KEY (sala_id) REFERENCES sala (id),
+  FOREIGN KEY (npc_id) REFERENCES NPC (id)
 );
 ```
 
-8) Cria a tabela PC. 
+8) Cria a tabela Loja. 
+```sql
+CREATE TABLE npc_room (
+  id INT NOT NULL AUTO_INCREMENT,
+  tipo VARCHAR(255) NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
+  sala_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (sala_id) REFERENCES sala (id),
+  FOREIGN KEY (npc_id) REFERENCES NPC (id),
+);
+```
+
+9) Cria a tabela PC. 
 ```sql
 CREATE TABLE pc (
   id INT NOT NULL AUTO_INCREMENT,
@@ -111,7 +127,7 @@ CREATE TABLE pc (
 );
 ```
 
-9) Cria a tabela Bencao. 
+10) Cria a tabela Bencao. 
 ```sql
 CREATE TABLE bencao (
 id INT NOT NULL AUTO_INCREMENT,
@@ -125,7 +141,7 @@ PRIMARY KEY (id)
 );
 ```
 
-10) Cria a tabela Arma. 
+11) Cria a tabela Arma. 
 ```sql
 CREATE TABLE arma (
   id INT NOT NULL AUTO_INCREMENT,
@@ -137,7 +153,7 @@ CREATE TABLE arma (
 );
 ```
 
-11) Cria a tabela Inventario. 
+12) Cria a tabela Inventario. 
 ```sql
 CREATE TABLE inventario (
   id INT NOT NULL AUTO_INCREMENT,
