@@ -441,6 +441,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Dependências Funcionais
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -450,6 +461,39 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dependencias-funcionais" class="md-nav__link">
+    Dependências Funcionais
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    Histórico de versão
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -619,6 +663,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dependencias-funcionais" class="md-nav__link">
+    Dependências Funcionais
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    Histórico de versão
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -639,6 +705,37 @@
 <p>Dependências Funcionais e Normalização são conceitos fundamentais em bancos de dados relacionais.</p>
 <p><strong>Dependências Funcionais</strong> se referem à relação entre dois conjuntos de atributos, A e B, de uma entidade. Dizemos que B é funcionalmente dependente de A (ou que A determina B) se, para cada valor de A, estiver associado um, e somente um, valor de B. Em outras palavras, se você conhece o valor de A, pode determinar o valor de B. Isso é representado como A → B.</p>
 <p><strong>Normalização</strong>, por outro lado, é um processo usado para organizar as tabelas em um banco de dados para evitar redundância ou complexidade nos dados. O objetivo da normalização é evitar problemas com repetição e atualização de dados, bem como cuidar da integridade dos dados. Isso é feito através da aplicação de uma série de regras estruturadas e agrupadas em níveis chamados Formas Normais.</p>
+<h2 id="dependencias-funcionais">Dependências Funcionais</h2>
+<p>1) <strong>Tabela Mundo:</strong>  id_ mundo &rarr; {nome}<br>
+2) <strong>Tabela PC:</strong> id_pc &rarr; {nome, status}<br>
+3) <strong>Tabela Chefe:</strong> id_chefe, id_mundo &rarr; {nome}<br>
+4) <strong>Tabela NPC:</strong> id_npc, id_mundo &rarr; {nome, funcao, descricao_completa}<br>
+5) <strong>T1abela NPC Inimigo:</strong> id_npc, id_mundo &rarr; {nome, armadura, descricao_completa}<br>
+6) <strong>Tabela Benção:</strong> id_bencao &rarr; {nome, raridadem habilidade, nivel}<br>
+7) <strong>Tabela Arma:</strong>  id_arma &rarr; {nome, tipo}<br>
+8) <strong>Tabela Inventário</strong> id_invetario, id_pc &rarr; {nome}<br>
+9) <strong>Tabela Sala:</strong>  id_sala, id_mundo &rarr; {tipo, descricao}<br>
+10) <strong>Tabela Loja:</strong> id_loja, id_sala, id_npc &rarr; {nome, tipo}<br>
+11) <strong>Tabela NPC Room:</strong> id_npc_room, id_npc, id_sala &rarr; {nome, tipo, descricao}<br></p>
+<h2 id="historico-de-versao">Histórico de versão</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Data</th>
+<th style="text-align: center;">Versão</th>
+<th>Descrição</th>
+<th>Autores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">30/10/2023</td>
+<td style="text-align: center;"><code>1.0</code></td>
+<td>Criação da primeira versão.</td>
+<td><a href="https://github.com/frmiza">Francisco Mizael</a></td>
+</tr>
+</tbody>
+</table>
 
 
 
