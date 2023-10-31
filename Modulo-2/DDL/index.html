@@ -710,31 +710,135 @@
 <pre><code class="language-sql">CREATE DATABASE hades;
 </code></pre>
 <p>2) Cria a tabela Mundo. </p>
-<pre><code class="language-sql">CREATE TABLE mundo ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id) );
+<pre><code class="language-sql">CREATE TABLE mundo (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id)
+);
 </code></pre>
 <p>3) Cria a tabela Sala. </p>
-<pre><code class="language-sql">CREATE TABLE sala ( id INT NOT NULL AUTO_INCREMENT, tipo VARCHAR(255) NOT NULL, descricao VARCHAR(255) NOT NULL, eh_chefe BOOLEAN NOT NULL, eh_npc BOOLEAN NOT NULL, mundo_id INT NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
+<pre><code class="language-sql">CREATE TABLE sala (
+  id INT NOT NULL AUTO_INCREMENT,
+  tipo VARCHAR(255) NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
+  eh_chefe BOOLEAN NOT NULL,
+  eh_npc BOOLEAN NOT NULL,
+  mundo_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (mundo_id) REFERENCES mundo (id)
+);
 </code></pre>
 <p>4) Cria a tabela NPC. </p>
-<pre><code class="language-sql">CREATE TABLE npc ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL, mundo_id INT NOT NULL, funcao VARCHAR(255) NOT NULL, descricao_completa VARCHAR(255), data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
+<pre><code class="language-sql">CREATE TABLE npc (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  mundo_id INT NOT NULL,
+  funcao VARCHAR(255) NOT NULL,
+  descricao_completa VARCHAR(255),
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (mundo_id) REFERENCES mundo (id)
+);
 </code></pre>
-<p>5) Cria a tabela Chefe. </p>
-<pre><code class="language-sql">CREATE TABLE chefe ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL, mundo_id INT NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
+<p>5) Cria a tabela NPC inimigo. </p>
+<pre><code class="language-sql">CREATE TABLE npc (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  mundo_id INT NOT NULL,
+  armadura INT NOT NULL,
+  descricao_completa VARCHAR(255),
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (mundo_id) REFERENCES mundo (id)
+);
 </code></pre>
-<p>6) Cria a tabela NPC room. </p>
-<pre><code class="language-sql">CREATE TABLE npc_room ( id INT NOT NULL AUTO_INCREMENT, tipo VARCHAR(255) NOT NULL, descricao VARCHAR(255) NOT NULL, sala_id INT NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (sala_id) REFERENCES sala (id) );
+<p>6) Cria a tabela Chefe. </p>
+<pre><code class="language-sql">CREATE TABLE chefe (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  mundo_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (mundo_id) REFERENCES mundo (id)
+);
 </code></pre>
-<p>7) Cria a tabela PC. </p>
-<pre><code class="language-sql">CREATE TABLE pc ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL,status BOOLEAN NOT NULL, sala_id INT NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (sala_id) REFERENCES sala (id) );
+<p>7) Cria a tabela NPC room. </p>
+<pre><code class="language-sql">CREATE TABLE npc_room (
+  id INT NOT NULL AUTO_INCREMENT,
+  tipo VARCHAR(255) NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
+  sala_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (sala_id) REFERENCES sala (id),
+  FOREIGN KEY (npc_id) REFERENCES NPC (id)
+);
 </code></pre>
-<p>8) Cria a tabela Bencao. </p>
-<pre><code class="language-sql">CREATE TABLE bencao ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL UNIQUE, raridade VARCHAR(255) NOT NULL CHECK (raridade IN (‘Comum’, ‘Raro’, ‘Épico’, ‘Heroico’, ‘Lendário’, ‘Duo’)), habilidade VARCHAR(255) NOT NULL CHECK (habilidade IN (‘Ataque’, ‘Especial’, ‘Elenco’, ‘Traço’, ‘Chamada’)), nivel INT NOT NULL CHECK (nivel &gt;0 AND nivel &lt;=5), data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id) );
+<p>8) Cria a tabela Loja. </p>
+<pre><code class="language-sql">CREATE TABLE npc_room (
+  id INT NOT NULL AUTO_INCREMENT,
+  tipo VARCHAR(255) NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
+  sala_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (sala_id) REFERENCES sala (id),
+  FOREIGN KEY (npc_id) REFERENCES NPC (id),
+);
 </code></pre>
-<p>9) Cria a tabela Arma. </p>
-<pre><code class="language-sql">CREATE TABLE arma ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL UNIQUE, tipo VARCHAR(255) NOT NULL CHECK (tipo IN (‘Espada’, ‘Lança’, ‘Escudo’, ‘Arco’, ‘Punho’, ‘Foice’)), data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id) );
+<p>9) Cria a tabela PC. </p>
+<pre><code class="language-sql">CREATE TABLE pc (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  status BOOLEAN NOT NULL,
+  sala_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (sala_id) REFERENCES sala (id)
+);
 </code></pre>
-<p>10) Cria a tabela Inventario. </p>
-<pre><code class="language-sql">CREATE TABLE inventario ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL, tipo VARCHAR(255) NOT NULL CHECK (tipo IN (‘Item’, ‘Arma’, ‘Bencao’)), jogador_id INT NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (jogador_id) REFERENCES pc (id) );
+<p>10) Cria a tabela Bencao. </p>
+<pre><code class="language-sql">CREATE TABLE bencao (
+id INT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(255) NOT NULL UNIQUE,
+raridade VARCHAR(255) NOT NULL CHECK (raridade IN (‘Comum’, ‘Raro’, ‘Épico’, ‘Heroico’, ‘Lendário’, ‘Duo’)),
+habilidade VARCHAR(255) NOT NULL CHECK (habilidade IN (‘Ataque’, ‘Especial’, ‘Elenco’, ‘Traço’, ‘Chamada’)),
+nivel INT NOT NULL CHECK (nivel &gt;0 AND nivel &lt;=5),
+data_criacao DATETIME NOT NULL,
+data_atualizacao DATETIME NOT NULL,
+PRIMARY KEY (id)
+);
+</code></pre>
+<p>11) Cria a tabela Arma. </p>
+<pre><code class="language-sql">CREATE TABLE arma (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL UNIQUE,
+  tipo VARCHAR(255) NOT NULL CHECK (tipo IN (‘Espada’, ‘Lança’, ‘Escudo’, ‘Arco’, ‘Punho’, ‘Foice’)),
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id)
+);
+</code></pre>
+<p>12) Cria a tabela Inventario. </p>
+<pre><code class="language-sql">CREATE TABLE inventario (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL, tipo VARCHAR(255) NOT NULL CHECK (tipo IN (‘Item’, ‘Arma’, ‘Bencao’)),
+  jogador_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (jogador_id) REFERENCES pc (id)
+);
 </code></pre>
 <h2 id="historico-de-versao">Histórico de versão</h2>
 <table>
@@ -752,6 +856,12 @@
 <td style="text-align: center;"><code>1.0</code></td>
 <td>Criação da primeira versão.</td>
 <td><a href="https://github.com/HacKairos">Joao Lucas Pinto Vasconcelos</a>, <a href="https://github.com/GuilhermeBES">Guilherme Basílio do Espirito Santo</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">30/10/2023</td>
+<td style="text-align: center;"><code>1.1</code></td>
+<td>Correções necessárias.</td>
+<td><a href="https://github.com/frmiza">Francisco Mizael</a></td>
 </tr>
 </tbody>
 </table>
