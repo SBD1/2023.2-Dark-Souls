@@ -15,51 +15,139 @@ CREATE DATABASE hades;
 
 2) Cria a tabela Mundo. 
 ```sql
-CREATE TABLE mundo ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id) );
+CREATE TABLE mundo (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id)
+);
 ```
 
 3) Cria a tabela Sala. 
 ```sql
-CREATE TABLE sala ( id INT NOT NULL AUTO_INCREMENT, tipo VARCHAR(255) NOT NULL, descricao VARCHAR(255) NOT NULL, eh_chefe BOOLEAN NOT NULL, eh_npc BOOLEAN NOT NULL, mundo_id INT NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
+CREATE TABLE sala (
+  id INT NOT NULL AUTO_INCREMENT,
+  tipo VARCHAR(255) NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
+  eh_chefe BOOLEAN NOT NULL,
+  eh_npc BOOLEAN NOT NULL,
+  mundo_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
 ```
 
 4) Cria a tabela NPC. 
 ```sql
-CREATE TABLE npc ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL, mundo_id INT NOT NULL, funcao VARCHAR(255) NOT NULL, descricao_completa VARCHAR(255), data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
+CREATE TABLE npc (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  mundo_id INT NOT NULL,
+  funcao VARCHAR(255) NOT NULL,
+  descricao_completa VARCHAR(255),
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
 ```
 
-5) Cria a tabela Chefe. 
+5) Cria a tabela NPC inimigo. 
 ```sql
-CREATE TABLE chefe ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL, mundo_id INT NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
+CREATE TABLE npc (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  mundo_id INT NOT NULL,
+  armadura INT NOT NULL,
+  descricao_completa VARCHAR(255),
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
 ```
 
-6) Cria a tabela NPC room. 
+6) Cria a tabela Chefe. 
 ```sql
-CREATE TABLE npc_room ( id INT NOT NULL AUTO_INCREMENT, tipo VARCHAR(255) NOT NULL, descricao VARCHAR(255) NOT NULL, sala_id INT NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (sala_id) REFERENCES sala (id) );
+CREATE TABLE chefe (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  mundo_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (mundo_id) REFERENCES mundo (id)
+);
 ```
 
-7) Cria a tabela PC. 
+7) Cria a tabela NPC room. 
 ```sql
-CREATE TABLE pc ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL,status BOOLEAN NOT NULL, sala_id INT NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (sala_id) REFERENCES sala (id) );
+CREATE TABLE npc_room (
+  id INT NOT NULL AUTO_INCREMENT,
+  tipo VARCHAR(255) NOT NULL,
+  descricao VARCHAR(255) NOT NULL,
+  sala_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (sala_id) REFERENCES sala (id)
+);
 ```
 
-8) Cria a tabela Bencao. 
+8) Cria a tabela PC. 
 ```sql
-CREATE TABLE bencao ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL UNIQUE, raridade VARCHAR(255) NOT NULL CHECK (raridade IN (‘Comum’, ‘Raro’, ‘Épico’, ‘Heroico’, ‘Lendário’, ‘Duo’)), habilidade VARCHAR(255) NOT NULL CHECK (habilidade IN (‘Ataque’, ‘Especial’, ‘Elenco’, ‘Traço’, ‘Chamada’)), nivel INT NOT NULL CHECK (nivel >0 AND nivel <=5), data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id) );
+CREATE TABLE pc (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  status BOOLEAN NOT NULL,
+  sala_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (sala_id) REFERENCES sala (id)
+);
 ```
 
-9) Cria a tabela Arma. 
+9) Cria a tabela Bencao. 
 ```sql
-CREATE TABLE arma ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL UNIQUE, tipo VARCHAR(255) NOT NULL CHECK (tipo IN (‘Espada’, ‘Lança’, ‘Escudo’, ‘Arco’, ‘Punho’, ‘Foice’)), data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id) );
+CREATE TABLE bencao (
+id INT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(255) NOT NULL UNIQUE,
+raridade VARCHAR(255) NOT NULL CHECK (raridade IN (‘Comum’, ‘Raro’, ‘Épico’, ‘Heroico’, ‘Lendário’, ‘Duo’)),
+habilidade VARCHAR(255) NOT NULL CHECK (habilidade IN (‘Ataque’, ‘Especial’, ‘Elenco’, ‘Traço’, ‘Chamada’)),
+nivel INT NOT NULL CHECK (nivel >0 AND nivel <=5),
+data_criacao DATETIME NOT NULL,
+data_atualizacao DATETIME NOT NULL,
+PRIMARY KEY (id) );
 ```
 
-10) Cria a tabela Inventario. 
+10) Cria a tabela Arma. 
 ```sql
-CREATE TABLE inventario ( id INT NOT NULL AUTO_INCREMENT, nome VARCHAR(255) NOT NULL, tipo VARCHAR(255) NOT NULL CHECK (tipo IN (‘Item’, ‘Arma’, ‘Bencao’)), jogador_id INT NOT NULL, data_criacao DATETIME NOT NULL, data_atualizacao DATETIME NOT NULL, PRIMARY KEY (id), FOREIGN KEY (jogador_id) REFERENCES pc (id) );
+CREATE TABLE arma (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL UNIQUE,
+  tipo VARCHAR(255) NOT NULL CHECK (tipo IN (‘Espada’, ‘Lança’, ‘Escudo’, ‘Arco’, ‘Punho’, ‘Foice’)),
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id)
+);
+```
+
+11) Cria a tabela Inventario. 
+```sql
+CREATE TABLE inventario (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL, tipo VARCHAR(255) NOT NULL CHECK (tipo IN (‘Item’, ‘Arma’, ‘Bencao’)),
+  jogador_id INT NOT NULL,
+  data_criacao DATETIME NOT NULL,
+  data_atualizacao DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (jogador_id) REFERENCES pc (id)
+);
 ```
 
 ## Histórico de versão 
 
 |    Data    | Versão | Descrição                   | Autores                                                      |
 | :--------: | :----: | --------------------------- | ------------------------------------------------------------ |
-| 30/10/2023 | `1.0`  | Criação da primeira versão. | [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES) |
+| 30/10/2023 | `1.0`  | Criação da primeira versão. | [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES), [Francisco Mizael](https://github.com/frmiza) |
