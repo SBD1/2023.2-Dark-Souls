@@ -1,8 +1,6 @@
 # Modelo Entidade-Relacionamento
 
-<div>
-<p>O modelo Entidade-Relacionamento tem como principal função, descrever itens, em outras palavras entidades, que são utilizadas para representar participantes de um cenário em um problema que deseja ser resolvido mediante utilização de um banco de dados.</p>
-</div>
+O modelo Entidade-Relacionamento tem como principal função, descrever itens, em outras palavras entidades, que são utilizadas para representar participantes de um cenário em um problema que deseja ser resolvido mediante utilização de um banco de dados.
 
 ## Entidades 
 - **Mundo**
