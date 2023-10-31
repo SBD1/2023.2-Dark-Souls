@@ -170,4 +170,5 @@ CREATE TABLE inventario (
 
 |    Data    | Versão | Descrição                   | Autores                                                      |
 | :--------: | :----: | --------------------------- | ------------------------------------------------------------ |
-| 30/10/2023 | `1.0`  | Criação da primeira versão. | [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES), [Francisco Mizael](https://github.com/frmiza) |
+| 30/10/2023 | `1.0`  | Criação da primeira versão. | [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES)|
+| 30/10/2023 | `1.1`  | Correções necessárias. | [Francisco Mizael](https://github.com/frmiza) |
