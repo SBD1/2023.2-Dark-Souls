@@ -5,39 +5,32 @@ VALUES
   ('Campos Elísios', NOW(), NOW()),
   ('Saída do Submundo', NOW(), NOW());
 
-
 INSERT INTO sala (tipo, descricao, eh_chefe, eh_npc, mundo_id, data_criacao, data_atualizacao)
-VALUES
-  ('Sala Normal', 'Sala normal do Tártaro', FALSE, FALSE, 1, NOW(), NOW()),
-  ('Sala Chefe', 'Sala do chefe do Tártaro', TRUE, FALSE, 1, NOW(), NOW()),
-  ('Sala NPC', 'Sala do NPC Sísifo', FALSE, TRUE, 1, NOW(), NOW()),
-  ('Sala Normal', 'Sala normal do Campo de Asfódelos', FALSE, FALSE, 2, NOW(), NOW()),
-  ('Sala Chefe', 'Sala do chefe do Campo de Asfódelos', TRUE, FALSE, 2, NOW(), NOW()),
-  ('Sala NPC', 'Sala do NPC Eurídice', FALSE, TRUE, 2, NOW(), NOW()),
-  ('Sala Normal', 'Sala normal dos Campos Elísios', FALSE, FALSE, 3, NOW(), NOW()),
-  ('Sala Chefe', 'Sala do chefe dos Campos Elísios', TRUE, FALSE, 3, NOW(), NOW()),
-  ('Sala NPC', 'Sala do NPC Pátroclo', FALSE, TRUE, 3, NOW(), NOW()),
-  ('Sala Normal', 'Sala normal da Saída do Submundo', FALSE, FALSE, 4, NOW(), NOW()),
-  ('Sala Chefe', 'Sala do chefe da Saída do Submundo', TRUE, FALSE, 4, NOW(), NOW()),
-  ('Sala NPC', 'Sala do NPC Caronte', FALSE, TRUE, 4, NOW(), NOW());
-
+SELECT 'Sala Normal', 'Sala normal do Tártaro', FALSE, FALSE, id, NOW(), NOW() FROM mundo WHERE nome = 'Tártaro'
+UNION ALL SELECT 'Sala Chefe', 'Sala do chefe do Tártaro', TRUE, FALSE, id, NOW(), NOW() FROM mundo WHERE nome = 'Tártaro'
+UNION ALL SELECT 'Sala NPC', 'Sala do NPC Sísifo', FALSE, TRUE, id, NOW(), NOW() FROM mundo WHERE nome = 'Tártaro'
+UNION ALL SELECT 'Sala Normal', 'Sala normal do Campo de Asfódelos', FALSE, FALSE, id, NOW(), NOW() FROM mundo WHERE nome = 'O Campo de Asfódelos'
+UNION ALL SELECT 'Sala Chefe', 'Sala do chefe do Campo de Asfódelos', TRUE, FALSE, id, NOW(), NOW() FROM mundo WHERE nome = 'O Campo de Asfódelos'
+UNION ALL SELECT 'Sala NPC', 'Sala do NPC Eurídice', FALSE, TRUE, id, NOW(), NOW() FROM mundo WHERE nome = 'O Campo de Asfódelos'
+UNION ALL SELECT 'Sala Normal', 'Sala normal dos Campos Elísios', FALSE, FALSE, id, NOW(), NOW() FROM mundo WHERE nome = 'Campos Elísios'
+UNION ALL SELECT 'Sala Chefe', 'Sala do chefe dos Campos Elísios', TRUE, FALSE, id, NOW(), NOW() FROM mundo WHERE nome = 'Campos Elísios'
+UNION ALL SELECT 'Sala NPC', 'Sala do NPC Pátroclo', FALSE, TRUE, id, NOW(), NOW() FROM mundo WHERE nome = 'Campos Elísios'
+UNION ALL SELECT 'Sala Normal', 'Sala normal da Saída do Submundo', FALSE, FALSE, id, NOW(), NOW() FROM mundo WHERE nome = 'Saída do Submundo'
+UNION ALL SELECT 'Sala Chefe', 'Sala do chefe da Saída do Submundo', TRUE, FALSE, id, NOW(), NOW() FROM mundo WHERE nome = 'Saída do Submundo'
+UNION ALL SELECT 'Sala NPC', 'Sala do NPC Caronte', FALSE, TRUE, id, NOW(), NOW() FROM mundo WHERE nome = 'Saída do Submundo';
 
 INSERT INTO npc (nome, mundo_id, funcao, descricao_completa, data_criacao, data_atualizacao)
-VALUES
-  ('Sísifo', 1, 'Fornece ouro, orbes roxos ou vida', 'Sísifo é condenado a empurrar uma pedra morro acima para sempre. Ele é um NPC amigável que pode fornecer recompensas ao jogador.', NOW(), NOW()),
-  ('Caronte', 1, 'Fornece bênçãos temporárias', 'Caronte é o barqueiro que leva os mortos para o Submundo. Ele é um NPC neutro que pode fornecer bênçãos temporárias ao jogador.', NOW(), NOW()),
-  ('Euridice', 2, 'Evolui duas bênçãos aleatórias de raridade ou quatro bênçãos de nível ou dá vida', 'Euridice é uma mulher que Hades amava. Ela é uma NPC amigável que pode evoluir as bênçãos do jogador.', NOW(), NOW()),
-  ('Pátroclo', 3, 'Fornece upgrades de dano por 10 câmaras, restaura "Desafios à Morte" ou dá vida', 'Pátroclo foi o amigo de Aquiles. Ele é um NPC amigável que pode fornecer upgrades ao jogador.', NOW(), NOW()),
-  ('Caronte', 4, 'Fornece bençãos temporárias', 'Caronte é o barqueiro que leva os mortos para o Submundo. Ele é um NPC neutro que pode fornecer bênçãos temporárias ao jogador.', NOW(), NOW());
-
+SELECT 'Sísifo', id,'Fornece ouro orbes roxos ou vida','Sísifo é condenado a empurrar uma pedra morro acima para sempre. Ele é um NPC amigável que pode fornecer recompensas ao jogador.',NOW(),NOW() FROM mundo WHERE nome = 'Tártaro'
+UNION ALL SELECT'Caronte',id,'Fornece bênçãos temporárias','Caronte é o barqueiro que leva os mortos para o Submundo. Ele é um NPC neutro que pode fornecer bênçãos temporárias ao jogador.',NOW(),NOW() FROM mundo WHERE nome =  'Tártaro'
+UNION ALL SELECT'Euridice',id,'Evolui duas bênçãos aleatórias de raridade ou quatro bênçãos de nível ou dá vida','Euridice é uma mulher que Hades amava. Ela é uma NPC amigável que pode evoluir as bênçãos do jogador.',NOW(),NOW() FROM mundo WHERE nome =  'O Campo de Asfódelos'
+UNION ALL SELECT'Pátroclo',id,'Fornece upgrades de dano por 10 câmaras restaura "Desafios à Morte" ou dá vida','Pátroclo foi o amigo de Aquiles. Ele é um NPC amigável que pode fornecer upgrades ao jogador.',NOW(),NOW() FROM mundo WHERE nome =  'Campos Elísios'
+UNION ALL SELECT'Caronte',id,'Fornece bençãos temporárias','Caronte é o barqueiro que leva os mortos para o Submundo. Ele é um NPC neutro que pode fornecer bênçãos temporárias ao jogador.',NOW(),NOW() FROM mundo WHERE nome =  'Saída do Submundo';
 
 INSERT INTO chefe (nome, mundo_id, data_criacao, data_atualizacao)
-VALUES
-  ('As 3 Fúrias', 1, NOW(), NOW()),
-  ('Hydra', 2, NOW(), NOW()),
-  ('Teseu e Astério', 3, NOW(), NOW()),
-  ('Hades', 4, NOW(), NOW());
-
+SELECT 'As 3 Fúrias', id, NOW(), NOW() FROM mundo WHERE nome = 'Tártaro'
+UNION ALL SELECT 'Hydra', id, NOW(), NOW() FROM mundo WHERE nome = 'O Campo de Asfódelos'
+UNION ALL SELECT 'Teseu e Astério', id, NOW(), NOW() FROM mundo WHERE nome = 'Campos Elísios'
+UNION ALL SELECT 'Hades', id, NOW(), NOW() FROM mundo WHERE nome = 'Saída do Submundo';
 
 INSERT INTO bencao (nome, raridade, habilidade, nivel, data_criacao, data_atualizacao)
 VALUES
@@ -55,29 +48,15 @@ VALUES
 
 
 INSERT INTO bencao_player (bencao_id, jogador_id, data_criacao, data_atualizacao)
+SELECT id, 1, NOW(), NOW() FROM bencao;
+
+INSERT INTO pc (nome, status, sala_id, data_criacao, data_atualizacao)
 VALUES
-  (1, 1, NOW(), NOW()),
-  (2, 1, NOW(), NOW()),
-  (3, 1, NOW(), NOW()),
-  (4, 1, NOW(), NOW()),
-  (5, 1, NOW(), NOW()),
-  (6, 1, NOW(), NOW()),
-  (7, 1, NOW(), NOW()),
-  (8, 1, NOW(), NOW()),
-  (9, 1, NOW(), NOW()),
-  (10, 1, NOW(), NOW()),
-  (11, 1, NOW(), NOW());
-
-
-INSERT INTO pc (nome, data_criacao, data_atualizacao)
-VALUES
-  ('O jogador', NOW(), NOW());
-
+  ('O jogador', TRUE, (SELECT id FROM sala LIMIT 1), NOW(), NOW());
 
 INSERT INTO inventario_player (nome, tipo, jogador_id, data_criacao, data_atualizacao)
 VALUES
   ('Romã do poder', 'Item', 1, NOW(), NOW());
-
 
 INSERT INTO arma (nome, tipo, data_criacao, data_atualizacao)
 VALUES
@@ -88,7 +67,6 @@ VALUES
   ('Coronacht', 'Arco em Busca de Coração', NOW(), NOW()),
   ('Exagryph', 'Canhão de Diamante', NOW(), NOW());
 
-
 INSERT INTO personagem (nome, pc_id)
 VALUES
-  ('O jogador', 1);
+  ('O jogador', (SELECT id FROM pc WHERE nome = 'O jogador'));
