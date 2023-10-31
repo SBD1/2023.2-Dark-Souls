@@ -36,7 +36,8 @@ CREATE TABLE sala (
   data_criacao DATETIME NOT NULL,
   data_atualizacao DATETIME NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
+  FOREIGN KEY (mundo_id) REFERENCES mundo (id)
+);
 ```
 
 4) Cria a tabela NPC. 
@@ -50,7 +51,8 @@ CREATE TABLE npc (
   data_criacao DATETIME NOT NULL,
   data_atualizacao DATETIME NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
+  FOREIGN KEY (mundo_id) REFERENCES mundo (id)
+);
 ```
 
 5) Cria a tabela NPC inimigo. 
@@ -64,7 +66,8 @@ CREATE TABLE npc (
   data_criacao DATETIME NOT NULL,
   data_atualizacao DATETIME NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (mundo_id) REFERENCES mundo (id) );
+  FOREIGN KEY (mundo_id) REFERENCES mundo (id)
+);
 ```
 
 6) Cria a tabela Chefe. 
@@ -118,7 +121,8 @@ habilidade VARCHAR(255) NOT NULL CHECK (habilidade IN (‘Ataque’, ‘Especial
 nivel INT NOT NULL CHECK (nivel >0 AND nivel <=5),
 data_criacao DATETIME NOT NULL,
 data_atualizacao DATETIME NOT NULL,
-PRIMARY KEY (id) );
+PRIMARY KEY (id)
+);
 ```
 
 10) Cria a tabela Arma. 
