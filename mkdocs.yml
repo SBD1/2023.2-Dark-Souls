@@ -1,0 +1,48 @@
+site_name: Hades
+
+repo_url: https://github.com/SBD1/2023.2-Hades
+
+theme:
+  name: material
+  language: pt-BR
+  logo: images/favicon.png
+  favicon: images/favicon.png
+  font:
+    text: Roboto
+  
+  palette: 
+    - scheme: default
+      primary: red
+      accent: red
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    - scheme: slate
+      primary: red
+      accent: red
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    
+  icon:
+    repo: fontawesome/brands/github
+    
+  features:
+    - header.autohide
+    - navigation.tabs
+    - navigation.top
+    - navigation.indexes
+
+nav:
+  - Modelagem: 
+    - Modelo Entidade-Relacionamento (MER): Modulo-1/MER.md
+    - Diagrama Entidade-Relacionamento (DER): Modulo-1/DER.md
+    - Modelo Relacional: Modulo-1/ModeloRelacional.md
+    - Dicíonario de Dados: Modulo-1/Dicionario_Dados.md
+    - Dependências Funcionais: Modulo-1/DFS.md
+  - SQL:
+    - Data Definition Language (DDL): Modulo-2/DDL.md
+    - Data Manipulation Language (DML): Modulo-2/DML.md
+    - Data Query Language (DQL): Modulo-2/DQL.md
+    - Álgebra Relacional: Modulo-2/Algebra.md

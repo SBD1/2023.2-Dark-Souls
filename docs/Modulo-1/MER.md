@@ -4,7 +4,7 @@
 <p>O modelo Entidade-Relacionamento tem como principal função, descrever itens, em outras palavras entidades, que são utilizadas para representar participantes de um cenário em um problema que deseja ser resolvido mediante utilização de um banco de dados.</p>
 </div>
 
-## 1. Entidades 
+## Entidades 
 - **Mundo**
 - **Bençãos**
 - **BençãoPlayer**
@@ -22,7 +22,7 @@
         - **Comum**
         - **Boss**
 
-## 2. Atributos
+## Atributos
 - **Mundo**:<ins>ID_mundo</ins>, nome, descrição;
 - **Bençãos**:<ins>ID_benção_undo</ins>,descrição, raridade, função; 
 - **BençãoPlayer**:<ins>ID_benção_player</ins>, descrição, raridade, função;
@@ -40,7 +40,7 @@
         - **Comum**:;
         - **Boss**:;
 
-## 3. Relacionamentos
+## Relacionamentos
 **Mundo** Possui **Sala**<br>
 Um Mundo possui N salas e uma sala pertence a um mundo.<br>
 **Cardinalidade** (1:N)
@@ -101,6 +101,7 @@ Um personagem boss Vive em um determinado Mundo.<br>
 Um personagem boss Dropa uma arma ao ser derrotado.<br>
 **Cardinalidade** (1:1)
 
+## Histórico de versão 
 
 | Data | Versão | Descrição | Autores |
 |:------:|:--------:|-----------|-------|
