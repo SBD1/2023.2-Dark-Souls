@@ -25,8 +25,6 @@ O projeto atual é uma iniciativa que busca desenvolver um jogo baseado no renom
 
 </div>
 
- o Projeto
-
 ## Apresentações
 
 | Módulo | Link da gravação          | Data       |
