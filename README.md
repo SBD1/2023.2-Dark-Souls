@@ -25,6 +25,25 @@ O projeto atual é uma iniciativa que busca desenvolver um jogo baseado no renom
 
 </div>
 
-## Executando o Projeto
+ o Projeto
 
+## Apresentações
 
+| Módulo | Link da gravação          | Data       |
+| ------ | ------------------------- | ---------- |
+| 1      | [Apresentação Módulo 1](docs/videos/VideoEntrega1SBD1.zip) | 30/09/2023 |
+| 2      | [Apresentação Módulo 2](docs/videos/VideoEntrega2.mp4) | 30/10/2023 |
+
+## Entregas
+
+- Módulo 1
+  - [Modelo Entidade-Relacionamento](https://sbd1.github.io/2023.2-Hades/Modulo-1/MER/)
+  - [Diagrama Entidade-Relacionamento](https://sbd1.github.io/2023.2-Hades/Modulo-1/DER/)
+  - [Modelo Relacional](https://sbd1.github.io/2023.2-Hades/Modulo-1/ModeloRelacional/)
+  - [Dicionário de Dados](https://sbd1.github.io/2023.2-Hades/Modulo-1/Dicionario_Dados/)
+  - [Normalização](https://sbd1.github.io/2023.2-Hades/Modulo-1/DFS/)
+- Módulo 2
+  - [DDL](https://sbd1.github.io/2023.2-Hades/Modulo-2/DDL/)
+  - [DML](https://sbd1.github.io/2023.2-Hades/Modulo-2/DML/)
+  - [DQL](https://sbd1.github.io/2023.2-Hades/Modulo-2/DQL/)
+  - [Álgebra Relacional](https://sbd1.github.io/2023.2-Hades/Modulo-2/Algebra/)
