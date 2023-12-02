@@ -31,7 +31,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 | Nome      | Descrição                 | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | --------- | ------------------------- | ------------ | ------- | ---------------------- |
 | id_arma   | Identificador da arma     | Int          |         | PK                     |
-| val_dano  | indica o dano que a arma causa    | String       | 255     | Not Null               |
+| val_dano  | indica o dano que a arma causa    | Int       |      | Not Null               |
 | raridade | indica a raridade da arma | String       | 255     | Unique                     |
 
 <center> <figcaption>
@@ -155,8 +155,8 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 | ------------------ | ---------------------------------------------------- | ------------ | ------- | ---------------------- |
 | id_mercador                | Identificador Para o mercador                          | Int          |         | PK / FK                      |
 | id_invent    | Identificador do inventario    | Int          |         | FK                     |
-| ouro          | Identificador Para a compra de ouro                           | String       | 255     | Not Null                   |
-| orbs             | Identificador Para a compra de orbs            | String      | 255     | Not Null               |
+| ouro          | Identificador Para a compra de ouro                           | Int       |      | Not Null                   |
+| orbs             | Identificador Para a compra de orbs            | Int     |      | Not Null               |
 
 <center> <figcaption>
     <b>Figura 11:
@@ -197,8 +197,8 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 | Nome             | Descrição                                                  | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ---------------- | ---------------------------------------------------------- | ------------ | ------- | ---------------------- |
 | id_pc         |  Identificador Para os status do jogador (PC)                            | int          |         | FK                     |
-| vida      |  Identificador para a vida do jogador                  | String       | 255     | Not Null               |
-| mana         |  Identificador para a mana do jogador | String       | 255     | Not Null               |
+| vida      |  Identificador para a vida do jogador                  | Int       |      | Not Null               |
+| mana         |  Identificador para a mana do jogador | Int       |      | Not Null               |
 | atk_base              | Identificador para o ataque base do personagem                                     | int          |         | Not Null               |
 | arm_base             | Identificador para o armadura base do personagem                                        | String       | 255     | Not Null                     |
 | operacao           | indica o que a benção faz                            | String       | 255     | Unique / Not Null                    |
@@ -300,7 +300,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome               | Descrição                                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ------------------ | ---------------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_sala               |  Identificador para a sala     | Int          |         | PK               |
+| id_sala               |  Identificador para a sala     | Int          |         | PK / FK              |
 | id_origem               | Identificador para a sala de origem    | Int          |         | FK               |
 
 <center> <figcaption>
@@ -313,7 +313,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome               | Descrição                                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ------------------ | ---------------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_sala               |  Identificador para a sala     | Int          |         | PK               |
+| id_sala               |  Identificador para a sala     | Int          |         | PK / FK               |
 | id_origem               | Identificador para a sala de origem    | Int          |         | FK               |
 
 <center> <figcaption>
