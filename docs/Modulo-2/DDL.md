@@ -174,7 +174,6 @@ CREATE TABLE PC (
     FOREIGN KEY (armadura) REFERENCES Armadura(id_armadura),
     FOREIGN KEY (arma) REFERENCES Arma(id_arma),
     FOREIGN KEY (sala) REFERENCES Sala(id_sala),
-    FOREIGN KEY (id_npc) REFERENCES Personagem(id_personagem)
 );
 ```
 17) Cria a tabela Instancia NPC.
