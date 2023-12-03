@@ -4,7 +4,7 @@ O Diagrama Entidade Relacionamento (DER) é apresenta componentes pré-estabelec
 
 
 <div style="text-align: center;">
-    <img src=../../images/DER.jpg>
+    <img src=../../images/DER.png>
     <p><strong>Figura 1</strong>: DER do jogo inspirado no universo do jogo Hades, Fonte: Autores.</p>
 </div>
 
