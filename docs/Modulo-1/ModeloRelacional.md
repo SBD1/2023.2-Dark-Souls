@@ -15,6 +15,7 @@ O diagrama com mais detalhes e maior qualidade pode ser encontrado em [diagrama]
 | Data | Versão | Descrição | Autores |
 |:------:|:--------:|-----------|-------|
 | 23/09/2023 | `1.0` | Criação da primeira versão. | [Francisco Mizael Santos](https://github.com/frmiza), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES), [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos) |
+| 28/11/2023 | `1.1` | Remodelagem. | [Francisco Mizael Santos](https://github.com/frmiza) |
 
 
 
