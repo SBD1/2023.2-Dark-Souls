@@ -16,9 +16,9 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome | Descrição                                                   | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ---- | ----------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| Id_invent   | Identificador para o inventario do personagem                                  | Int          |         | PK                     |
-| portador | indica qual personagem é o portador do inventário | String       | 255     | Not Null      |
-| num_slots | indica o numero de slots do inventário | int       |      | Unique/Not Null     |
+| Id_invent   | Identificador para o inventario do personagem                                  | Serial          |         | PK                     |
+| portador | indica qual personagem é o portador do inventário | Int       |      | Not Null      |
+| num_slots | indica o numero de slots do inventário | int       |      | Not Unique / Not Null     |
 
 <center> <figcaption>
     <b>Figura 1:
@@ -28,11 +28,11 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 ### Arma
 
-| Nome      | Descrição                 | Tipo de Dado | Tamanho | Restrições  de Domínio |
-| --------- | ------------------------- | ------------ | ------- | ---------------------- |
-| id_arma   | Identificador da arma     | Int          |         | PK                     |
-| val_dano  | indica o dano que a arma causa    | Int       |      | Not Null               |
-| raridade | indica a raridade da arma | String       | 255     | Unique                     |
+| Nome      | Descrição                          | Tipo de Dado | Tamanho | Restrições de Domínio    |
+| --------- | ---------------------------------- | ------------ | ------- | ------------------------ |
+| id_arma   | Identificador da arma              | Serial       |         | PK / FK                  |
+| val_dano  | Indica o dano que a arma causa     | Int          |         | Not Null                 |
+| raridade  | Indica a raridade da arma           | Char         | 25      | Unique, Not Null         |
 
 <center> <figcaption>
     <b>Figura 2:
@@ -42,14 +42,14 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 ### Item
 
-| Nome      | Descrição                 | Tipo de Dado | Tamanho | Restrições  de Domínio |
-| --------- | ------------------------- | ------------ | ------- | ---------------------- |
-| id_item    | Identificador do item     | Int          |         | PK                     |
-| nome  | indica o nome do item     | String       | 255     | Not Null               |
-| descricao | descrição do item | String       | 255     | Unique                     |
-| valor_ouro | quantidade de ouro coletado | Int       | 255     | Not Null                      |
-| tipo | indica o tipo de item | String       | 255     | Inique                      |
-| nivel_min | indica o nível mínimo para coletar o item | Int      |      | Not Null                     |
+| Nome       | Descrição                                    | Tipo de Dado | Tamanho | Restrições de Domínio    |
+| ---------- | -------------------------------------------- | ------------ | ------- | ------------------------ |
+| id_item    | Identificador do item                        | Int          |         | PK / Not Null            |
+| nome       | Indica o nome do item                        | Varchar      | 50      | Not Null                 |
+| descricao  | Descrição do item                            | Varchar      | 400     | Unique, Not Null          |
+| valor_ouro | Quantidade de ouro coletado                  | Int          |         | Not Null                 |
+| tipo       | Indica o tipo de item                        | Varchar      | 25      | Unique, Not Null          |
+| nivel_min  | Indica o nível mínimo para coletar o item    | Int          |         | Not Null                 |
 
 <center> <figcaption>
     <b>Figura 3:
@@ -57,12 +57,12 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
 
-### Pocao_Vida
+### Poção de Vida
 
 
 | Nome | Descrição                                                   | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ---- | ----------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_vida  | Identificador para a vida do personagem                                  | Int          |         | PK / FK                    |
+| id_pocao_vida  | Identificador para a vida do personagem                                  | Serial          |         | PK / FK                    |
 | val_vida | Identificador para a quantidade de vida que vai ser regenerada na poção | Int      |      | Unique / Not Null      |
 
 <center> <figcaption>
@@ -71,11 +71,11 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
 
-### Pocao_Mana
+### Pocão de Mana
 
 | Nome | Descrição                                                   | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ---- | ----------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_mana  | Identificador para a mana do personagem                                  | Int          |         | PK / FK                     |
+| id_pocao_mana  | Identificador para a mana do personagem                                  | Serial          |         | PK / FK                     |
 | val_mana | Identificador para a quantidade de mana que vai ser regenerada na poção | Int       |      | Unique / Not Null      |
 
 <center> <figcaption>
@@ -84,11 +84,11 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
 
-### orbs
+### Orbs
 
 | Nome            | Descrição                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | --------------- | ------------------------------------------------ | ------------ | ------- | ---------------------- |
-| id_orbs        | Identificador para os orbs do personagem                        | Int          |         | PK / FK                     |
+| id_orbs        | Identificador para os orbs do personagem                        | Serial          |         | PK / FK                     |
 
 <center> <figcaption>
     <b>Figura 6:
@@ -100,7 +100,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome            | Descrição                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | --------------- | ------------------------------------------------ | ------------ | ------- | ---------------------- |
-| id_cons          | Identificador para o consumível                        | String          |    255    | PK / FK                     |
+| id_cons          | Identificador para o consumível                        | Serial          |        | PK / FK                     |
 | max_utilizacao | Identificador para a quantidade máxima de consumiveis    | int          |         | Not Null               |
 
 <center> <figcaption>
@@ -113,7 +113,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome            | Descrição                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | --------------- | ------------------------------------------------ | ------------ | ------- | ---------------------- |
-| id_armor          | Identificador para a armadura do personagem                      | Int          |         | PK / FK                     |
+| id_armor          | Identificador para a armadura do personagem                      | Serial          |         | PK / FK                     |
 | cal_armor | calculo dos status da armadura | int          |         | Not Null               |
 
 <center> <figcaption>
@@ -122,12 +122,12 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
 
-### Instancia_Item
+### Instancia Item
 
 | Nome      | Descrição                 | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | --------- | ------------------------- | ------------ | ------- | ---------------------- |
-| id_invent    | Identificador do inventario    | Int          |         | FK                    |
-| id_item  | Identificador do item     | Int       |      | FK               |
+| id_invent    | Identificador do inventario    | Int          |         | FK  / Not Null                  |
+| id_item  | Identificador do item     | Int       |      | FK / Not Null              |
 
 <center> <figcaption>
     <b>Figura 9:
@@ -139,9 +139,9 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome               | Descrição                                            | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ------------------ | ---------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_npc                 | Identificador Para o NPC                             | Int          |         | PK / FK                     |
-| funcao               | indica a função do npc  | String       | 255     | Unique / Not Null      |
-| descricao          | Descrição do NPC                           | String       | 255     |      Not Null              |
+| id_npc                 | Identificador Para o NPC                             | Serial          |         | PK / FK                     |
+| funcao               | indica a função do npc  | Char       | 10     | Not Null      |
+| descricao          | Descrição do NPC                           | Char       | 400     |      Not Null              |
 
 <center> <figcaption>
     <b>Figura 10:
@@ -153,8 +153,8 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome               | Descrição                                            | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ------------------ | ---------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_mercador                | Identificador Para o mercador                          | Int          |         | PK / FK                      |
-| id_invent    | Identificador do inventario    | Int          |         | FK                     |
+| id_mercador                | Identificador Para o mercador                          | Serial          |         | PK / FK                      |
+| id_invent    | Identificador do inventario    | Int          |         | FK  / Not Null                    |
 | ouro          | Identificador Para a compra de ouro                           | Int       |      | Not Null                   |
 | orbs             | Identificador Para a compra de orbs            | Int     |      | Not Null               |
 
@@ -169,9 +169,9 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome      | Descrição                                                   | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | --------- | ----------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_sala       | Identificador Para a sala                                | Int          |         | PK                     |
-| mundo      |  informa a origem de uma Sala (Exemplo Fogo, Terra, Nublado) | Int       |      | FK               |
-| Dificuldade |  Identificador para a dificuldade      | String       | 255     | Not Null               |
+| id_sala       | Identificador Para a sala                                | Serial          |         | PK                     |
+| mundo      |  informa a origem de uma Sala (Exemplo Fogo, Terra, Nublado) | Int       |      | FK  / Not Null              |
+| Dificuldade |  Identificador para a dificuldade      | Int       |      | Not Null               |
 
 <center> <figcaption>
     <b>Figura 12:
@@ -183,8 +183,8 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome        | Descrição                               | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ----------- | --------------------------------------- | ------------ | ------- | ---------------------- |
-| id_personagem   | Identificador para o jogador            | int          |         | PK                     |
-| nome | Descreve o nome para um jogador         | String       | 255     | Not Null               |
+| id_personagem   | Identificador para o jogador            | Serial          |         | PK                     |
+| nome | Descreve o nome para um jogador         | Char       | 40    |               |
 
 <center> <figcaption>
     <b>Figura 13:
@@ -196,12 +196,12 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome             | Descrição                                                  | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ---------------- | ---------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_pc         |  Identificador Para os status do jogador (PC)                            | int          |         | FK                     |
+| id_pc         |  Identificador Para os status do jogador (PC)                            | int          |         | FK / Not Null                    |
 | vida      |  Identificador para a vida do jogador                  | Int       |      | Not Null               |
 | mana         |  Identificador para a mana do jogador | Int       |      | Not Null               |
 | atk_base              | Identificador para o ataque base do personagem                                     | int          |         | Not Null               |
-| arm_base             | Identificador para o armadura base do personagem                                        | String       | 255     | Not Null                     |
-| operacao           | indica o que a benção faz                            | String       | 255     | Unique / Not Null                    |
+| arm_base             | Identificador para o armadura base do personagem                                        | int       |      | Not Null                     |
+| operacao           | indica o que a benção faz                            | Char      | 3     | Unique / Not Null                    |
 
 <center> <figcaption>
     <b>Figura 14:
@@ -209,11 +209,11 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
 
-### Inim Comum
+### Inimigo Comumum
 
 | Nome               | Descrição                                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ------------------ | ---------------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_inm_com | Indetificador para a recompensa (cada recompensa possui um tipo) | Int          |         | PK / FK          |
+| id_inm_com | Indetificador para a recompensa (cada recompensa possui um tipo) | Serial         |         | PK / FK          |
 | vida               | Identificador para a vida do jogador      | Int          |         | Not Null               |
 | nivel              | Identificador para o nível do personagem                             | Int       |      | Not Null               |
 | atk_base              | Identificador para o ataque base do personagem                                     | int          |         | Not Null               |
@@ -227,11 +227,11 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
     <br><small>Fonte:Propria</small>
 </figcaption> </center>
 
-### PC
+### PC 
 
 | Nome               | Descrição                                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ------------------ | ---------------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_pc         |  Identificador Para os status do jogador (PC)                            | int          |         | PK / FK                     |
+| id_pc         |  Identificador Para os status do jogador (PC)                            | Serial          |         | PK                   |
 | vida               | Identificador para a vida do jogador    | Int          |         | Not Null               |
 | mana               | Identificador para a mana do jogador                             | Int       |      | Not Null               |
 | ouro              |  Identificador para a quantidade de ouro do personagem                                     | Int          |         | Not Null               |
@@ -252,8 +252,8 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome               | Descrição                                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ------------------ | ---------------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_npc |  Indetificador para o NPC | Int          |         | FK          |
-| id_sala               |  Identificador para a sala do NPC    | Int          |         | FK               |
+| id_npc |  Indetificador para o NPC | Int          |         | FK / Not Null          |
+| id_sala               |  Identificador para a sala do NPC    | Int          |         | FK / Not Null              |
 
 <center> <figcaption>
     <b>Figura 17:
@@ -266,14 +266,14 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome               | Descrição                                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ------------------ | ---------------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_chefe | Indetificador para o chefe | Int          |         | PK / FK          |
-| arma            | Indetificador para a arma                                        | Int      |      | FK                     |
+| id_chefe | Indetificador para o chefe | Serial          |         | PK / FK          |
+| arma            | Indetificador para a arma                                        | Int      |      | FK / Not Null                    |
 | vida               | Identificador para a vida do jogador    | Int          |         | Not Null               |
 | nivel              | Identificador para o nível do personagem                             | Int       |      | Not Null               |
 | atk_base              | Identificador para o ataque base do personagem                                     | Int          |         | Not Null               |
-| arm_base             | Identificador para a armadura base do personagem                                        | Int       |      | FK                     |
-| ouro_drop             | Identificador para os drops de ouro                                         | Int       |      | FK                     |
-| orb_drop             | Identificador para os drops de orbs                                         | Int       |      | FK                     |
+| arm_base             | Identificador para a armadura base do personagem                                        | Int       |      | Not Null                   |
+| ouro_drop             | Identificador para os drops de ouro                                         | Int       |      | Not Null                    |
+| orb_drop             | Identificador para os drops de orbs                                         | Int       |      | Not Null                     |
 
 <center> <figcaption>
     <b>Figura 18:
@@ -285,7 +285,7 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome               | Descrição                                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ------------------ | ---------------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_mundo | Indetificador para especificar o mundo | Int          |         | PK          |
+| id_mundo | Indetificador para especificar o mundo | Serial          |         | PK          |
 | id_anterior               | Indetificador para o mundo anterior  | Int          |         | FK               |
 | id_proximo               | Indetificador para o próximo mundo                           | Int       |      | FK              |
 | Dificuldade |  Identificador para a dificuldade      | Int       |      | Not Null               |
@@ -300,8 +300,8 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome               | Descrição                                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ------------------ | ---------------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_sala               |  Identificador para a sala     | Int          |         | PK / FK              |
-| id_origem               | Identificador para a sala de origem    | Int          |         | FK               |
+| id_sala               |  Identificador para a sala     | Int          |         | PK / FK / Not Null             |
+| id_origem               | Identificador para a sala de origem    | Int          |         | FK / Not Null              |
 
 <center> <figcaption>
     <b>Figura 20:
@@ -313,8 +313,8 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 
 | Nome               | Descrição                                                        | Tipo de Dado | Tamanho | Restrições  de Domínio |
 | ------------------ | ---------------------------------------------------------------- | ------------ | ------- | ---------------------- |
-| id_sala               |  Identificador para a sala     | Int          |         | PK / FK               |
-| id_origem               | Identificador para a sala de origem    | Int          |         | FK               |
+| id_sala               |  Identificador para a sala     | Int          |         | PK / FK / Not Null              |
+| id_origem               | Identificador para a sala de origem    | Int          |         | FK  / Not Null             |
 
 <center> <figcaption>
     <b>Figura 21:
@@ -328,3 +328,4 @@ A seguir Descrevemos todas Entidade que imaginamos para o jogo Hades.
 | 23/09/2023 | `1.0`  | Criação da primeira versão. | [Francisco Mizael Santos](https://github.com/frmiza), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES), [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos) |
 | 28/10/2023 |  1.1   |    Nomalizando os dados     |                                                                    [Francisco Mizael Santos](https://github.com/frmiza)                                                                    |
 | 02/12/2023 |  1.2   |   Criação da segunda versão   |                                                                    [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES)                                                                    |
+| 02/12/2023 |  1.3   |   Correções necessárias    |                                                                    [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES)                                                                    |
