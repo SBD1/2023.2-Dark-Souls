@@ -1,51 +1,41 @@
-SELECT id AS id_mundo, nome, data_criacao, data_atualizacao
-FROM mundo;
+BEGIN TRANSACTION;
 
 SELECT *
-FROM mundo
-WHERE nome = 'Tártaro';
-
-SELECT id AS id_chefe, nome, mundo_id, data_criacao, data_atualizacao
-FROM chefe;
+FROM Mundo;
 
 SELECT *
-FROM chefe
-WHERE nome = 'As 3 Fúrias';
+FROM Mundo
+WHERE nome = 'Nome do mundo'; 
 
-SELECT id AS id_npc, nome, mundo_id, funcao, descricao_completa, data_criacao, data_atualizacao
-FROM npc;
-
-SELECT *
-FROM npc
-WHERE nome = 'Caronte';
-
-SELECT
-  inventario.id AS id_inventario,
-  inventario.nome AS nome_inventario,
-  inventario.tipo AS tipo_inventario,
-  pc.nome AS nome_personagem
-FROM inventario_player AS inventario
-JOIN pc ON inventario.jogador_id = pc.id;
-
-SELECT bencao.id AS id_bencao, bencao.nome, bencao.raridade, bencao.habilidade, bencao.nivel, pc.nome
-FROM bencao_player
-JOIN bencao ON bencao_player.bencao_id = bencao.id
-JOIN pc ON bencao_player.jogador_id = pc.id;
-
-SELECT id AS id_bencao, nome, raridade, habilidade, nivel
-FROM bencao
-WHERE nome = 'Benção de Zeus';
-
-SELECT id AS id_personagem, nome
-FROM pc;
-
-SELECT nome, tipo
-FROM inventario_player
-WHERE nome = 'Romã do poder';
+SELECT Personagen.nome
+FROM Personagen 
+JOIN PC ON Personagem.id_personagem = PC.id_pc;
 
 SELECT *
-FROM arma
-WHERE nome = 'Stygius';
+FROM Personagen
+JOIN PC ON Personagem.id_personagem = PC.id_pc;
 
-SELECT id AS id_arma, nome, tipo, data_criacao, data_atualizacao
-FROM arma;
+SELECT Sala.id_sala, Sala.nome, Sala.dificuldade
+FROM Sala 
+JOIN Mundo ON Sala.mundo = Mundo.id_mundo;
+
+SELECT Sala.id_sala, Sala.nome, Sala.dificuldade
+FROM Sala
+JOIN PC ON PC.sala = Sala.id_sala;
+
+SELECT Sala.id_sala, Sala.nome, Sala.dificuldade
+FROM Sala
+JOIN PC ON PC.sala = Sala.id_sala
+JOIN Viagem_Destino ON Viagem_Destino.id_destino = Sala.id_sala;
+
+SELECT Sala.id_sala, Sala.nome, Sala.dificuldade
+FROM Sala
+JOIN PC ON PC.sala = Sala.id_sala
+JOIN Viagem_Origem ON Viagem_Origem.id_origem = Sala.id_sala;
+
+SELECT Inimigo_Comum.*
+FROM Instancias_NPC
+JOIN Sala ON Instancias_NPC.id_sala = Sala.id_sala
+JOIN Inimigo_Comum ON Inimigo_Comum.id_inm_com = Instancias_NPC.id_npc;
+
+COMMIT;
