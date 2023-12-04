@@ -11,96 +11,63 @@ Estas consultas são a base para um projeto que visa extrair e analisar dados do
 
 1) **Recuperar todos os mundos**:
 ```sql
-SELECT id_mundo, nome, data_criacao, data_atualizacao
-FROM mundo;
+SELECT *
+FROM Mundo;
 ```
-
 2) **Recuperar um mundo específico**:
 ```sql
 SELECT *
-FROM mundo
-WHERE nome = 'Tártaro';
+FROM Mundo
+WHERE nome = 'Nome do mundo'; 
 ```
-
-3) **Para todos os chefes**:
+3) **Recuperar todos os pc do jogo**:
 ```sql
-SELECT chefe.id_chefe, chefe.nome, chefe.mundo_id, chefe.data_criacao, chefe.data_atualizacao
-FROM chefe;
+SELECT Personagen.nome
+FROM Personagen 
+JOIN PC ON Personagem.id_personagem = PC.id_pc;
 ```
-
-4) **Para um chefe específico**:
-```sql
-SELECT *
-FROM chefe
-WHERE nome = 'As 3 Fúrias';
-```
-
-5) **Para todos os NPCs**:
-```sql
-SELECT npc.id_npc, npc.nome, npc.mundo_id, npc.funcao, npc.descricao_completa, npc.data_criacao, npc.data_atualizacao
-FROM npc;
-```
-
-6) **Para um NPC específico**:
+4) **Recuperar todos os pc do jogo**:
 ```sql
 SELECT *
-FROM npc
-WHERE nome = 'Caronte';
+FROM Personagen
+JOIN PC ON Personagem.id_personagem = PC.id_pc;
 ```
-
-7) **Para o inventário do jogador**:
+5) **Recuperar todos as salas de um mondo especifico**:
 ```sql
-SELECT
-  inventario.id_inventário AS id_inventário,
-  inventario.nome AS nome_inventário,
-  inventario.tipo AS tipo_inventário,
-  personagem.nome AS nome_personagem
-FROM inventario
-JOIN personagem ON inventario.jogador_id = personagem.id_personagem;
+SELECT Sala.id_sala, Sala.nome, Sala.dificuldade
+FROM Sala 
+JOIN Mundo ON Sala.mundo = Mundo.id_mundo;
 ```
-
-8) **Para as bênçãos do jogador**:
+6) **Recuperar a sala que um PC se encontra**:
 ```sql
-SELECT bencao.id_bencao, bencao.nome, bencao.raridade, bencao.habilidade, bencao.nivel, personagem.nome
-FROM bencao_player
-JOIN bencao ON bencao_player.bencao_id = bencao.id_bencao
-JOIN personagem ON bencao_player.jogador_id = personagem.id_personagem;
+SELECT Sala.id_sala, Sala.nome, Sala.dificuldade
+FROM Sala
+JOIN PC ON PC.sala = Sala.id_sala;
 ```
-
-9) **Para uma bênção específica**:
+7) **Recupera as salas anteriores de uma sala que o PC esta**:
 ```sql
-SELECT bencao.id_bencao, bencao.nome, bencao.raridade, bencao.habilidade, bencao.nivel
-FROM bencao
-WHERE bencao.nome = 'Benção de Zeus';
+SELECT Sala.id_sala, Sala.nome, Sala.dificuldade
+FROM Sala
+JOIN PC ON PC.sala = Sala.id_sala
+JOIN Viagem_Destino ON Viagem_Destino.id_destino = Sala.id_sala;
 ```
-
-10) **Para o personagem principal**:
+8) **Recupera as salas posteriores de uma sala que o PC esta**:
 ```sql
-SELECT personagem.id_personagem, personagem.nome
-FROM personagem;
+SELECT Sala.id_sala, Sala.nome, Sala.dificuldade
+FROM Sala
+JOIN PC ON PC.sala = Sala.id_sala
+JOIN Viagem_Origem ON Viagem_Origem.id_origem = Sala.id_sala;
 ```
-
-11) **Para a Romã do Poder**:
+9) **Recupera todas as instancias de NPC inimigo comum em uma sala**:
 ```sql
-SELECT nome, tipo
-FROM inventario_player
-WHERE nome = 'Romã do poder';
-```
-
-12) **Para uma arma específica**:
-```sql
-SELECT *
-FROM arma
-WHERE nome = 'Stygius';
-```
-
-13) **Para todas as armas**:
-```sql
-SELECT arma.id_arma, arma.nome, arma.tipo, arma.data_criacao, arma.data_atualizacao
-FROM arma;
+SELECT Inimigo_Comum.*
+FROM Instancias_NPC
+JOIN Sala ON Instancias_NPC.id_sala = Sala.id_sala
+JOIN Inimigo_Comum ON Inimigo_Comum.id_inm_com = Instancias_NPC.id_npc;
 ```
 ## Histórico de versão 
 
 |    Data    | Versão | Descrição                   | Autores                                                      |
 | :--------: | :----: | --------------------------- | ------------------------------------------------------------ |
 | 30/10/2023 | `1.0`  | Criação da primeira versão. | [Joao Lucas Pinto Vasconcelos](https://github.com/HacKairos), [Guilherme Basílio do Espirito Santo](https://github.com/GuilhermeBES) |
+| 30/11/2023 | `1.1`  | Atualização das buscas conforme o novo modelo. | [Francisco Mizael Santos da Silca](https://github.com/frmiza) |
