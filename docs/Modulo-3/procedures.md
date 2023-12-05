@@ -55,6 +55,31 @@ O personagem principal realiza uma troca de sala alguma das salas posteriores di
     </ul>
 </div>
 
+```sql
+CREATE OR REPLACE PROCEDURE realizou_troca_sala(
+  id_pc_jogando INTEGER,
+  id_sala_alvo INTEGER
+)
+AS $troca_sala$
+DECLARE
+  id_sala_pc INTEGER;
+BEGIN
+  SELECT Sala.id_sala INTO id_sala_pc
+    FROM Sala
+    JOIN PC ON PC.sala = Sala.id_sala
+    WHERE PC.id_pc = id_pc_jogando;
+  
+  IF (SELECT COUNT(*) FROM Viagem_Destino WHERE Viagem_Destino.id_sala = id_sala_pc AND Viagem_Destino.id_destino = id_sala_alvo) THEN
+    UPDATE PC
+    SET sala = id_sala_alvo
+    WHERE id_pc = id_pc_jogando;
+  ELSE
+    RAISE NOTICE 'Sala nao disponivel';
+  END IF;
+END;
+$troca_sala$ LANGUAGE plpgsql; 
+```
+
 |    Data    | Versão | Descrição                   | Autores                                                      |
 | :--------: | :----: | --------------------------- | ------------------------------------------------------------ |
 | 04/12/2023 | `1.0`  | Criação da primeira versão. | [Francisco Mizael Santos da Silca](https://github.com/frmiza) |
