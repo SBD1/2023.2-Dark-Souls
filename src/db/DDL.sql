@@ -1,10 +1,6 @@
-BEGIN TRANSACTION; 
-
-CREATE DATABASE hades;
-
 CREATE TABLE Item (
-    id_item INT NOT NULL AUTO_INCREMENT,
-     nome VARCHAR(50) NOT NULL,
+    id_item SERIAL,
+    nome VARCHAR(50) NOT NULL,
     descricao CHAR(400) NOT NULL,
     valor_ouro INT NOT NULL,
     tipo CHAR(25) NOT NULL,
@@ -53,6 +49,11 @@ CREATE TABLE Pocao_Mana (
     PRIMARY KEY (id_pocao_mana),
     FOREIGN KEY (id_pocao_mana) REFERENCES Consumivel(id_cons)
 );
+CREATE TABLE Inventario (
+    id_invent SERIAL,
+    num_slots INT NOT NULL UNIQUE,
+    PRIMARY KEY (id_invent)
+);
 
 CREATE TABLE Instancia_Item (
     id_invent INT NOT NULL,
@@ -61,20 +62,32 @@ CREATE TABLE Instancia_Item (
     FOREIGN KEY (id_item) REFERENCES Item(id_item)
 );
 
-CREATE TABLE Inventario (
-    id_invent SERIAL,
-    num_slots INT NOT NULL UNIQUE,
-    PRIMARY KEY (id_invent),
+CREATE TABLE mundo (
+    id_mundo SERIAL,
+    id_anterior INT,
+    id_proximo INT,
+    dificuldade INT NOT NULL,
+    PRIMARY KEY (id_mundo),
+    FOREIGN KEY (id_anterior) REFERENCES Mundo (id_mundo),
+    FOREIGN KEY (id_proximo) REFERENCES Mundo (id_mundo)
 );
 
-CREATE TABLE personagem (
+CREATE TABLE Sala (
+    id_sala SERIAL,
+    mundo INT NOT NULL,
+    dificuldade INT NOT NULL,
+    PRIMARY KEY (id_sala),
+    FOREIGN KEY (mundo) REFERENCES Mundo (id_mundo)
+);
+
+CREATE TABLE Personagem (
   id_personagem SERIAL,
   nome CHAR(40),
   PRIMARY KEY (id_personagem)
 );
 
 CREATE TABLE NPC (
-    id_npc SERIAL,
+    id_npc INT NOT NULL,
     funcao CHAR(10) NOT NULL,
     descricao CHAR(400) NOT NULL,
     PRIMARY KEY (id_npc),
@@ -82,17 +95,17 @@ CREATE TABLE NPC (
 );
 
 CREATE TABLE Mercador (
-    id_mercador SERIAL,
+    id_mercador INT NOT NULL,
     id_invent INT NOT NULL,
     ouro INT NOT NULL,
     orbs INT NOT NULL,
     PRIMARY KEY (id_mercador),
     FOREIGN KEY (id_mercador) REFERENCES NPC(id_npc),
-    FOREIGN KEY (id_invent) REFERENCES Inventario(id_invent),
+    FOREIGN KEY (id_invent) REFERENCES Inventario(id_invent)
 );
 
 CREATE TABLE Inimigo_Comum (
-    id_inm_com SERIAL,
+    id_inm_com INT NOT NULL,
     vida INT NOT NULL,
     nivel INT NOT NULL,
     atk_base INT NOT NULL,
@@ -104,8 +117,8 @@ CREATE TABLE Inimigo_Comum (
     FOREIGN KEY (id_inm_com) REFERENCES NPC(id_npc)
 );
 
-CREATE TABLE chefe (
-    id_chefe SERIAL,
+CREATE TABLE Chefe (
+    id_chefe INT NOT NULL,
     arma INT NOT NULL,
     vida INT NOT NULL,
     nivel INT NOT NULL,
@@ -119,7 +132,7 @@ CREATE TABLE chefe (
 );
 
 CREATE TABLE PC (
-    id_pc SERIAL,
+    id_pc INT NOT NULL,
     vida INT NOT NULL,
     mana INT NOT NULL,
     ouro INT NOT NULL,
@@ -133,7 +146,7 @@ CREATE TABLE PC (
     FOREIGN KEY (armadura) REFERENCES Armadura(id_armadura),
     FOREIGN KEY (arma) REFERENCES Arma(id_arma),
     FOREIGN KEY (sala) REFERENCES Sala(id_sala),
-    FOREIGN KEY (id_npc) REFERENCES Personagem(id_personagem)
+    FOREIGN KEY (id_pc) REFERENCES Personagem(id_personagem)
 );
 
 CREATE TABLE Instancia_NPC (
@@ -150,16 +163,7 @@ CREATE TABLE bencao (
     atk_base INT NOT NULL,
     arm_base INT NOT NULL,
     operacao CHAR(3) UNIQUE NOT NULL,
-    PRIMARY KEY (id_bencao),
     FOREIGN KEY (id_pc) REFERENCES PC(id_pc)
-);
-
-CREATE TABLE sala (
-    id_sala SERIAL,
-    mundo INT NOT NULL,
-    dificuldade INT NOT NULL,
-    PRIMARY KEY (id_sala),
-    FOREIGN KEY (mundo) REFERENCES Mundo (id_mundo)
 );
 
 CREATE TABLE Viagem_Origem (
@@ -175,15 +179,5 @@ CREATE TABLE Viagem_Destino (
     id_destino INT NOT NULL,
     PRIMARY KEY (id_sala),
     FOREIGN KEY (id_sala) REFERENCES Sala(id_sala),
-    FOREIGN KEY (id_origem) REFERENCES Sala(id_sala)
-);
-
-CREATE TABLE mundo (
-    id_mundo SERIAL,
-    id_anterior INT,
-    id_proximo INT,
-    dificuldade INT NOT NULL,
-    PRIMARY KEY (id_mundo),
-    FOREIGN KEY (id_anterior) REFERENCES Mundo (id_mundo),
-    FOREIGN KEY (id_proximo) REFERENCES Mundo (id_mundo)
+    FOREIGN KEY (id_destino) REFERENCES Sala(id_sala)
 );
