@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS Inventario;
 
 CREATE TABLE Item (
     id_item SERIAL,
-     nome VARCHAR(50) NOT NULL,
+    nome VARCHAR(50) NOT NULL,
     descricao CHAR(400) NOT NULL,
     valor_ouro INT NOT NULL,
     tipo CHAR(25) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE Item (
 CREATE TABLE Arma (
     id_arma SERIAL,
     val_dano INT NOT NULL,
-    raridade CHAR(25) NOT NULL UNIQUE,
+    raridade CHAR(25) NOT NULL,
     FOREIGN KEY (id_arma) REFERENCES Item(id_item)
       ON DELETE CASCADE
       ON UPDATE CASCADE,
@@ -118,17 +118,6 @@ CREATE TABLE Mundo (
     PRIMARY KEY (id_mundo)
 );
 
-CREATE TABLE Viagem_Mundo_Origem (
-    id_mundo INT NOT NULL,
-    id_mundo_origem INT NOT NULL,
-    FOREIGN KEY (id_mundo) REFERENCES Mundo(id_mundo)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE,
-    FOREIGN KEY (id_mundo_origem) REFERENCES Mundo(id_mundo)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
-);
-
 CREATE TABLE Viagem_Mundo_Destino (
     id_mundo INT NOT NULL,
     id_mundo_destino INT NOT NULL,
@@ -142,6 +131,7 @@ CREATE TABLE Viagem_Mundo_Destino (
 );
 CREATE TABLE Sala (
     id_sala SERIAL,
+    nome CHAR(40),
     mundo INT NOT NULL,
     dificuldade INT NOT NULL,
     PRIMARY KEY (id_sala),
@@ -150,17 +140,6 @@ CREATE TABLE Sala (
       ON UPDATE CASCADE
 );
 
-CREATE TABLE Viagem_Origem (
-    id_sala INT NOT NULL,
-    id_origem INT NOT NULL,
-    PRIMARY KEY (id_sala),
-    FOREIGN KEY (id_sala) REFERENCES Sala(id_sala)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE,
-    FOREIGN KEY (id_origem) REFERENCES Sala(id_sala)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
-);
 
 CREATE TABLE Viagem_Destino (
     id_sala INT NOT NULL,
