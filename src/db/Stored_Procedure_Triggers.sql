@@ -312,10 +312,10 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- CRIA INSTANCIA ITEM
-CREATE OR REPLACE PROCEDURE cria_inventario(id_novo_item INTEGER, id_inventario INTEGER)
+CREATE OR REPLACE PROCEDURE cria_instancia_item(id_novo_item INTEGER, id_inventario INTEGER)
 AS $$
 BEGIN
-  INSERT INTO Instancia_Item(id_invent, id_item) VALUES (id_invent, id_novo_item);
+  INSERT INTO Instancia_Item(id_invent, id_item) VALUES (id_inventario, id_novo_item);
 END;
 $$ LANGUAGE plpgsql;
 
@@ -355,17 +355,16 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
 -- CRIA Mercador
-CREATE OR REPLACE PROCEDURE cria_pc(
+CREATE OR REPLACE PROCEDURE cria_mercador(
   nome_novo_mercador CHAR(50),
-  funcao_novo_npc CHAR(10),
-  descricao_novo_npc CHAR(400),
   valor_novo_ouro INTEGER,
   id_inventario_mercador INTEGER,
   id_sala_mercador INTEGER)
 AS $$
 DECLARE
+  funcao_novo_npc CHAR(10) DEFAULT 'Mercador';
+  descricao_novo_npc CHAR(400) DEFAULT 'Vende e compra itens e orbs';
   novo_id INTEGER;
 
 BEGIN
@@ -378,57 +377,53 @@ BEGIN
     RETURNING id_personagem INTO novo_id;
 
     INSERT INTO NPC (id_npc, funcao, descricao)
-    VALUES (novp_id, funcao_novo_npc, descricao_novo_npc);
-    
-    INSERT INTO MErcador (id_mercador, ouro, inventario, sala)
+    VALUES (novo_id, funcao_novo_npc, descricao_novo_npc);
+
+    INSERT INTO Mercador (id_mercador, ouro, inventario, sala)
     VALUES (novo_id,valor_novo_ouro, id_inventario_mercador, id_sala_mercador);
   END IF;
 END;
 $$ LANGUAGE plpgsql;
 
-
 -- CRIA Inimigo Comum
-CREATE OR REPLACE PROCEDURE cria_pc(
+CREATE OR REPLACE PROCEDURE cria_inm_com(
   nome_novo_inm_com CHAR(50),
-  funcao_novo_npc CHAR(10),
-  descricao_novo_npc CHAR(400),
   valor_nova_vida INTEGER,
-  valor_nivel_inm_com INTEGER
+  valor_nivel_inm_com INTEGER,
   valor_novo_atk_base INTEGER,
   valor_novo_arm_base INTEGER,
   valor_novo_ouro_drop INTEGER,
-  valor_novo_orbs_drop INTEGER,
+  valor_novo_orbs_drop INTEGER)
 AS $$
 DECLARE
+  funcao_novo_npc CHAR(10) DEFAULT 'Inimigo C.'
+  descricao_novo_npc CHAR(400) DEFAULT 'Inimigos Comuns te atacam com ataques basicos'
   novo_id INTEGER;
 
 BEGIN
   IF NOT EXISTS (SELECT 1
                  FROM Personagem
-                 WHERE Personagem.nome = nome_novo_pc) THEN
+                 WHERE Personagem.nome = nome_novo_inm_com) THEN
 
     INSERT INTO Personagem (nome)
     VALUES (nome_novo_inm_com)
     RETURNING id_personagem INTO novo_id;
-    
-    INSERT INTO NPC (id_npc, funcao, descricao)
-    VALUES (novp_id, funcao_novo_npc, descricao_novo_npc);
 
-    INSERT INTO Inim_Comum (id_inm_com, vida, nivel, atk_base, arm_base, ouro_drop, orb_drop)
-    VALUES (novp_id, valor_nova_vida, valor_nivel_inm_com, valor_novo_atk_base, valor_novo_arm_base, valor_novo_ouro_drop, valor_novo_orbs_drop);
-  
+    INSERT INTO NPC (id_npc, funcao, descricao)
+    VALUES (novo_id, funcao_novo_npc, descricao_novo_npc);
+
+    INSERT INTO Inimigo_Comum (id_inm_com, vida, nivel, atk_base, arm_base, ouro_drop, orb_drop)
+    VALUES (novo_id, valor_nova_vida, valor_nivel_inm_com, valor_novo_atk_base, valor_novo_arm_base, valor_novo_ouro_drop, valor_novo_orbs_drop);
+
   END IF;
 END;
 $$ LANGUAGE plpgsql;
 
-
 -- CRIA CHEFE
-CREATE OR REPLACE PROCEDURE cria_pc(
+CREATE OR REPLACE PROCEDURE cria_chefe(
   nome_novo_chefe CHAR(50),
-  funcao_novo_npc CHAR(10),
-  descricao_novo_npc CHAR(400),
   valor_nova_vida INTEGER,
-  valor_nivel_chefe INTEGER
+  valor_nivel_chefe INTEGER,
   valor_novo_atk_base INTEGER,
   valor_novo_arm_base INTEGER,
   valor_novo_ouro_drop INTEGER,
@@ -437,6 +432,8 @@ CREATE OR REPLACE PROCEDURE cria_pc(
   sala_chefe INTEGER)
 AS $$
 DECLARE
+  funcao_novo_npc CHAR(10) DEFAULT 'Chefe';
+  descricao_novo_npc CHAR(400) DEFAULT 'Chefes do mundo representam o maior nivel de poder no mundo, derrote-o para mudar de mundo';
   novo_id INTEGER;
 
 BEGIN
@@ -447,39 +444,38 @@ BEGIN
     INSERT INTO Personagem (nome)
     VALUES (nome_novo_chefe)
     RETURNING id_personagem INTO novo_id;
-    
-    INSERT INTO NPC (id_npc, funcao, descricao)
-    VALUES (novp_id, funcao_novo_npc, descricao_novo_npc);
 
-    INSERT INTO Inim_Comum (id_chefe, vida, nivel, atk_base, arm_base, ouro_drop, orb_drop, arma, sala)
-    VALUES (novp_id, valor_nova_vida, valor_nivel_chefe, valor_novo_atk_base, valor_novo_arm_base, valor_novo_ouro_drop, valor_novo_orbs_drop,arma_chefe,sala_chefe);
-  
+    INSERT INTO NPC (id_npc, funcao, descricao)
+    VALUES (novo_id, funcao_novo_npc, descricao_novo_npc);
+
+    INSERT INTO Chefe (id_chefe, vida, nivel, atk_base, arm_base, ouro_drop, orb_drop, arma, sala)
+    VALUES (novo_id, valor_nova_vida, valor_nivel_chefe, valor_novo_atk_base, valor_novo_arm_base, valor_novo_ouro_drop, valor_novo_orbs_drop,arma_chefe,sala_chefe);
+
   END IF;
 END;
 $$ LANGUAGE plpgsql;
 
-
 -- CRIA  Instancia de Inimigo Comum
-CREATE OR REPLACE PROCEDURE cria_pc(
+CREATE OR REPLACE PROCEDURE instancia_inm_com(
   id_novo_inm_com INTEGER,
   id_nova_sala INTEGER)
+ AS $$
 DECLARE
-  valor_nova_vida INTEGER,
-  valor_nivel_inm_com INTEGER
-  valor_novo_atk_base INTEGER,
-  valor_novo_arm_base INTEGER,
-  valor_novo_ouro_drop INTEGER,
-  valor_novo_orbs_drop INTEGER,
-AS $$
+  valor_nova_vida INTEGER;
+  valor_nivel_inm_com INTEGER;
+  valor_novo_atk_base INTEGER;
+  valor_novo_arm_base INTEGER;
+  valor_novo_ouro_drop INTEGER;
+  valor_novo_orbs_drop INTEGER;
 BEGIN
-    
-    SELECT Inm_Com.vida, Inm_Com.nivel, Inm_Com.atk_base, Inm_Com.arm_base, Inm_Com.ouro_drop, Inm_Com.orb_drop INTO 
+
+    SELECT Inimigo_Comum.vida, Inimigo_Comum.nivel, Inimigo_Comum.atk_base, Inimigo_Comum.arm_base, Inimigo_Comum.ouro_drop, Inimigo_Comum.orb_drop INTO
             valor_nova_vida, valor_nivel_inm_com, valor_novo_atk_base, valor_novo_arm_base, valor_novo_ouro_drop, valor_novo_orbs_drop
     FROM Inimigo_Comum
     WHERE id_novo_inm_com = Inimigo_Comum.id_inm_com;
 
     INSERT INTO Instancia_inim_comum (id_inm_com, sala, vida, nivel, atk_base, arm_base, ouro_drop, orb_drop)
     VALUES (id_novo_inm_com, id_nova_sala, valor_nova_vida, valor_nivel_inm_com, valor_novo_atk_base, valor_novo_arm_base, valor_novo_ouro_drop, valor_novo_orbs_drop);
-  
+
 END;
 $$ LANGUAGE plpgsql;

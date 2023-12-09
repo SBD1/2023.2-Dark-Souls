@@ -92,7 +92,7 @@ CREATE TABLE Pocao_Mana (
 
 CREATE TABLE Inventario (
     id_invent SERIAL,
-    num_slots INT NOT NULL UNIQUE,
+    num_slots INT,
     PRIMARY KEY (id_invent)
 );
 
@@ -174,7 +174,6 @@ CREATE TABLE Mercador (
     inventario INT NOT NULL,
     sala INT NOT NULL,
     ouro INT NOT NULL,
-    orbs INT NOT NULL,
     PRIMARY KEY (id_mercador),
     FOREIGN KEY (id_mercador) REFERENCES NPC(id_npc)
       ON DELETE CASCADE
