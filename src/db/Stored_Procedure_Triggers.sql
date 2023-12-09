@@ -302,3 +302,184 @@ BEGIN
   END IF;
 END;
 $$ LANGUAGE plpgsql;
+
+-- CRIA INVENTARIO
+CREATE OR REPLACE PROCEDURE cria_inventario(novo_num_slots INTEGER)
+AS $$
+BEGIN
+  INSERT INTO inventario(num_slots) VALUES (novo_num_slots);
+END;
+$$ LANGUAGE plpgsql;
+
+-- CRIA INSTANCIA ITEM
+CREATE OR REPLACE PROCEDURE cria_inventario(id_novo_item INTEGER, id_inventario INTEGER)
+AS $$
+BEGIN
+  INSERT INTO Instancia_Item(id_invent, id_item) VALUES (id_invent, id_novo_item);
+END;
+$$ LANGUAGE plpgsql;
+
+---------------------------------------------------------------------------
+-------------------- CRIA A ESTRURUTA DE PERSONAGENS  ---------------------
+---------------------------------------------------------------------------
+
+-- CRIA PC
+CREATE OR REPLACE PROCEDURE cria_pc(
+  nome_novo_pc CHAR(50),
+  novo_nivel_pc INTEGER,
+  valor_nova_vida INTEGER,
+  valor_nova_mana INTEGER,
+  valor_novo_ouro INTEGER,
+  valor_novo_orbs INTEGER,
+  valor_novo_atk_base INTEGER,
+  valor_novo_arm_base INTEGER,
+  id_armadura_pc INTEGER,
+  id_arma_pc INTEGER,
+  id_sala_pc INTEGER)
+AS $$
+DECLARE
+  novo_id INTEGER;
+
+BEGIN
+  IF NOT EXISTS (SELECT 1
+                 FROM Personagem
+                 WHERE Personagem.nome = nome_novo_pc) THEN
+
+    INSERT INTO Personagem (nome)
+    VALUES (nome_novo_pc)
+    RETURNING id_personagem INTO novo_id;
+
+    INSERT INTO PC (id_pc,vida, mana, ouro, orbs, atk_base, arm_base, armadura, arma, sala)
+    VALUES (novo_id, valor_nova_vida, valor_nova_mana, valor_novo_ouro, valor_novo_orbs, valor_novo_atk_base, valor_novo_arm_base, id_armadura_pc, id_arma_pc, id_sala_pc);
+  END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- CRIA Mercador
+CREATE OR REPLACE PROCEDURE cria_pc(
+  nome_novo_mercador CHAR(50),
+  funcao_novo_npc CHAR(10),
+  descricao_novo_npc CHAR(400),
+  valor_novo_ouro INTEGER,
+  id_inventario_mercador INTEGER,
+  id_sala_mercador INTEGER)
+AS $$
+DECLARE
+  novo_id INTEGER;
+
+BEGIN
+  IF NOT EXISTS (SELECT 1
+                 FROM Personagem
+                 WHERE Personagem.nome = nome_novo_mercador) THEN
+
+    INSERT INTO Personagem (nome)
+    VALUES (nome_novo_mercador)
+    RETURNING id_personagem INTO novo_id;
+
+    INSERT INTO NPC (id_npc, funcao, descricao)
+    VALUES (novp_id, funcao_novo_npc, descricao_novo_npc);
+    
+    INSERT INTO MErcador (id_mercador, ouro, inventario, sala)
+    VALUES (novo_id,valor_novo_ouro, id_inventario_mercador, id_sala_mercador);
+  END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- CRIA Inimigo Comum
+CREATE OR REPLACE PROCEDURE cria_pc(
+  nome_novo_inm_com CHAR(50),
+  funcao_novo_npc CHAR(10),
+  descricao_novo_npc CHAR(400),
+  valor_nova_vida INTEGER,
+  valor_nivel_inm_com INTEGER
+  valor_novo_atk_base INTEGER,
+  valor_novo_arm_base INTEGER,
+  valor_novo_ouro_drop INTEGER,
+  valor_novo_orbs_drop INTEGER,
+AS $$
+DECLARE
+  novo_id INTEGER;
+
+BEGIN
+  IF NOT EXISTS (SELECT 1
+                 FROM Personagem
+                 WHERE Personagem.nome = nome_novo_pc) THEN
+
+    INSERT INTO Personagem (nome)
+    VALUES (nome_novo_inm_com)
+    RETURNING id_personagem INTO novo_id;
+    
+    INSERT INTO NPC (id_npc, funcao, descricao)
+    VALUES (novp_id, funcao_novo_npc, descricao_novo_npc);
+
+    INSERT INTO Inim_Comum (id_inm_com, vida, nivel, atk_base, arm_base, ouro_drop, orb_drop)
+    VALUES (novp_id, valor_nova_vida, valor_nivel_inm_com, valor_novo_atk_base, valor_novo_arm_base, valor_novo_ouro_drop, valor_novo_orbs_drop);
+  
+  END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- CRIA CHEFE
+CREATE OR REPLACE PROCEDURE cria_pc(
+  nome_novo_chefe CHAR(50),
+  funcao_novo_npc CHAR(10),
+  descricao_novo_npc CHAR(400),
+  valor_nova_vida INTEGER,
+  valor_nivel_chefe INTEGER
+  valor_novo_atk_base INTEGER,
+  valor_novo_arm_base INTEGER,
+  valor_novo_ouro_drop INTEGER,
+  valor_novo_orbs_drop INTEGER,
+  arma_chefe INTEGER,
+  sala_chefe INTEGER)
+AS $$
+DECLARE
+  novo_id INTEGER;
+
+BEGIN
+  IF NOT EXISTS (SELECT 1
+                 FROM Personagem
+                 WHERE Personagem.nome = nome_novo_chefe) THEN
+
+    INSERT INTO Personagem (nome)
+    VALUES (nome_novo_chefe)
+    RETURNING id_personagem INTO novo_id;
+    
+    INSERT INTO NPC (id_npc, funcao, descricao)
+    VALUES (novp_id, funcao_novo_npc, descricao_novo_npc);
+
+    INSERT INTO Inim_Comum (id_chefe, vida, nivel, atk_base, arm_base, ouro_drop, orb_drop, arma, sala)
+    VALUES (novp_id, valor_nova_vida, valor_nivel_chefe, valor_novo_atk_base, valor_novo_arm_base, valor_novo_ouro_drop, valor_novo_orbs_drop,arma_chefe,sala_chefe);
+  
+  END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- CRIA  Instancia de Inimigo Comum
+CREATE OR REPLACE PROCEDURE cria_pc(
+  id_novo_inm_com INTEGER,
+  id_nova_sala INTEGER)
+DECLARE
+  valor_nova_vida INTEGER,
+  valor_nivel_inm_com INTEGER
+  valor_novo_atk_base INTEGER,
+  valor_novo_arm_base INTEGER,
+  valor_novo_ouro_drop INTEGER,
+  valor_novo_orbs_drop INTEGER,
+AS $$
+BEGIN
+    
+    SELECT Inm_Com.vida, Inm_Com.nivel, Inm_Com.atk_base, Inm_Com.arm_base, Inm_Com.ouro_drop, Inm_Com.orb_drop INTO 
+            valor_nova_vida, valor_nivel_inm_com, valor_novo_atk_base, valor_novo_arm_base, valor_novo_ouro_drop, valor_novo_orbs_drop
+    FROM Inimigo_Comum
+    WHERE id_novo_inm_com = Inimigo_Comum.id_inm_com;
+
+    INSERT INTO Instancia_inim_comum (id_inm_com, sala, vida, nivel, atk_base, arm_base, ouro_drop, orb_drop)
+    VALUES (id_novo_inm_com, id_nova_sala, valor_nova_vida, valor_nivel_inm_com, valor_novo_atk_base, valor_novo_arm_base, valor_novo_ouro_drop, valor_novo_orbs_drop);
+  
+END;
+$$ LANGUAGE plpgsql;

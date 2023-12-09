@@ -1,0 +1,111 @@
+-- REALIZA MUDANCA DE SALA
+CREATE OR REPLACE FUNCTION realizou_troca_sala(
+  id_pc_jogando INTEGER,
+  sala_alvo CHAR(9)
+)
+RETURN BOOLEAN
+AS $troca_sala$
+DECLARE
+  id_sala_pc INTEGER;
+  num_inm_sala INTEGER;
+  dificuldade_sala_pc INTEGER;
+  chefe_vivo BOOLEAN;
+BEGIN
+
+  
+  SELECT Sala.id_sala, Sala.dificuldade INTO id_sala_pc, dificuldade_sala_pc
+  FROM Sala
+  JOIN PC ON PC.sala = Sala.id_sala
+  WHERE PC.id_pc = id_pc_jogando;
+   
+  IF(dificuldade_sala_pc >= 1 AND dificuldade_sala_pc < 10) THEN 
+    SELECT COUNT(*) INTO num_inm_sala
+    FROM Instancia_inim_Comum
+    WHERE Instancia_inim_Comum.sala = id_sala_pc;
+  END IF;
+
+  IF(dificuldade_sala_pc = 10) THEN
+    SELECT Chefe.vida
+      CASE 
+        WHEN Chefe.vida = 0 THEN chefe_vivo = FALSE
+        WHEN Chefe.vida > 0 THEN chefe_vivo = TRUE
+        ELSE chefe_vivo = TRUE
+      END AS status_chefe
+    FROM Chefe 
+    WHERE Chefe.sala = id_sala_pc;
+
+  END IF;
+
+  IF(num_inm_sala > 0) THEN
+    RETURN FALSE;
+  ELSE 
+    
+    IF(sala_alvo = 'proximo') THEN
+      SELECT Viagem_Destino.id_destino FROM Viagem_Destino WHERE Viagem_Destino.id_sala = id_sala_pc THEN
+      UPDATE PC
+      SET sala = id_sala_alvo
+      WHERE id_pc = id_pc_jogando;
+      RETURN TRUE;
+    END IF;
+    
+    IF(sala_alvo = 'anterior') THEN
+      SELECT Viagem_Destino.id_sala FROM Viagem_Destino WHERE Viagem_Destino.id_destino = id_sala_pc THEN
+      UPDATE PC
+      SET sala = id_sala
+      WHERE id_pc = id_pc_jogando;
+      RETURN TRUE;
+    END IF;
+  
+  END IF;
+  ELSE
+    RAISE NOTICE 'Nao possui Salas para viagem';
+  END IF;
+END;
+$troca_sala$ LANGUAGE plpgsql;  
+
+-- REALIZA MUDANCA DE MUNDO
+CREATE OR REPLACE FUNCTION realizou_troca_mundo(
+  id_pc_jogando INTEGER,
+  mundo_alvo CHAR(9)
+)
+RETURN BOOL
+AS $troca_sala$
+DECLARE
+  id_sala_pc INTEGER;
+  num_inm_sala INTEGER
+BEGIN
+
+  
+SELECT Sala.id_sala INTO id_sala_pc
+    FROM Sala
+    JOIN PC ON PC.sala = Sala.id_sala
+    WHERE PC.id_pc = id_pc_jogando;
+  
+  SELECT COUNT(*) INTO num_inm_sala
+    FROM Instancia_inim_Comum
+    WHERE Instancia_inim_Comum.sala = id_sala_pc;
+
+  IF(num_inm_sala > 0) THEN
+    RETURN FALSE;
+  ELSE 
+    
+    IF(sala_alvo = 'proximo') THEN
+      SELECT Viagem_Destino.id_destino FROM Viagem_Destino WHERE Viagem_Destino.id_sala = id_sala_pc THEN
+      UPDATE PC
+      SET sala = id_sala_alvo
+      WHERE id_pc = id_pc_jogando;
+    END IF;
+    
+    IF(sala_alvo = 'anterior') THEN
+      SELECT Viagem_Destino.id_sala FROM Viagem_Destino WHERE Viagem_Destino.id_destino = id_sala_pc THEN
+      UPDATE PC
+      SET sala = id_sala
+      WHERE id_pc = id_pc_jogando;
+    END IF;
+  
+  END IF;
+  ELSE
+    RAISE NOTICE 'Sala nao disponivel';
+  END IF;
+END;
+$troca_sala$ LANGUAGE plpgsql;  
