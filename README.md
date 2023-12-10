@@ -31,7 +31,7 @@ O projeto atual é uma iniciativa que busca desenvolver um jogo baseado no renom
 | ------ | ------------------------- | ---------- |
 | 1      | [Apresentação Módulo 1](docs/videos/VideoEntrega1SBD1.zip) | 30/09/2023 |
 | 2      | [Apresentação Módulo 2](docs/videos/VideoEntrega2.mp4) | 30/10/2023 |
-| 3      | [Apresentação Módulo 2](docs/videos/entrega3.mkv) | 04/12/2023 |
+| 3      | [Apresentação Módulo 3](docs/videos/VideoEntrega3) | 04/12/2023 |
 
 ## Entregas
 
