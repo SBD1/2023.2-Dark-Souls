@@ -144,7 +144,8 @@ $troca_sala$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION pc_realizou_atk_basico(
   id_pc_jogando INTEGER,
-  id_npc_alvo INTEGER
+  id_npc_alvo INTEGER,
+  eh_chefe BOOLEAN;
 )
 RETURNS BOOLEAN
 AS $pc_atk_basico$
@@ -156,7 +157,6 @@ DECLARE
   ouro_dropado INTEGER;
   orb_dropada INTEGER;
   dano_causado INTEGER;
-  eh_chefe BOOLEAN DEFAULT FALSE;
 BEGIN
 
   SELECT Arma.val_dano INTO dano_arma
@@ -173,8 +173,7 @@ BEGIN
     FROM Instancia_inim_Comum
     WHERE Instancia_inim_Comum.id_instancia = id_npc_alvo;
   ELSE
-  	IF EXISTS (SELECT 1 FROM Chefe WHERE Chefe.id_chefe = id_npc_alvo) THEN
-    	eh_chefe := TRUE;
+  	IF EXISTS (SELECT 1 FROM Chefe WHERE Chefe.id_chefe = id_npc_alvo AND eh_chefe = TRUE) THEN
     	SELECT Chefe.vida, Chefe.arm_base, Chefe.ouro_drop, Chefe.orb_drop INTO vida_npc, armadura_npc, ouro_dropado, orb_dropada
     	FROM Chefe
     	WHERE Chefe.id_instancia = id_npc_alvo;
@@ -229,7 +228,8 @@ $pc_atk_basico$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION npc_realizou_atk_basico(
   id_pc_jogando INTEGER,
-  id_npc_atk INTEGER
+  id_npc_atk INTEGER,
+  eh_chefe BOOLEAN;
 )
 RETURNS BOOLEAN
 AS $npc_atk_basico$
@@ -257,8 +257,7 @@ BEGIN
     FROM Instancia_inim_Comum
     WHERE Instancia_inim_Comum.id_instancia = id_npc_atk;
   ELSE
-    IF EXISTS (SELECT 1 FROM Chefe WHERE Chefe.id_chefe = id_npc_alvo) THEN
-      eh_chefe := TRUE;
+    IF EXISTS (SELECT 1 FROM Chefe WHERE Chefe.id_chefe = id_npc_alvo and eh_chefe = TRUE) THEN
       SELECT Chefe.atk_base INTO dano_base
       FROM Chefe
       WHERE Chefe.id_instancia = id_npc_atk;
