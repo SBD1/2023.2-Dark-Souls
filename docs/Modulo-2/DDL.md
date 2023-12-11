@@ -167,6 +167,8 @@ CREATE TABLE PC (
     orbs INT NOT NULL,
     atk_base INT NOT NULL,
     arm_base INT NOT NULL,
+    bencao_pc INT NOT NULL,
+    num_bencoes_ativas INT;
     armadura INT NOT NULL,
     arma INT NOT NULL,
     sala INT NOT NULL,
