@@ -233,6 +233,7 @@ CREATE TABLE PC (
     armadura INT NOT NULL,
     arma INT NOT NULL,
     sala INT NOT NULL,
+    bencao_pc INT NOT NULL,
     PRIMARY KEY (id_pc),
     FOREIGN KEY (armadura) REFERENCES Armadura(id_armadura)
       ON DELETE CASCADE

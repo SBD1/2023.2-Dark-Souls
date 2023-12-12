@@ -173,6 +173,8 @@ CREATE TABLE PC (
     orbs INT NOT NULL,
     atk_base INT NOT NULL,
     arm_base INT NOT NULL,
+    bencao_pc INT NOT NULL,
+    num_bencoes_ativas INT;
     armadura INT NOT NULL,
     arma INT NOT NULL,
     sala INT NOT NULL,
@@ -180,7 +182,6 @@ CREATE TABLE PC (
     FOREIGN KEY (armadura) REFERENCES Armadura(id_armadura),
     FOREIGN KEY (arma) REFERENCES Arma(id_arma),
     FOREIGN KEY (sala) REFERENCES Sala(id_sala),
-    FOREIGN KEY (id_pc) REFERENCES Personagem(id_personagem)
 );
 ```
 17) Cria a tabela Instancia Inimigo Comum.

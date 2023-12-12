@@ -479,3 +479,40 @@ BEGIN
 
 END;
 $$ LANGUAGE plpgsql;
+
+-- CRIA Benção
+CREATE OR REPLACE PROCEDURE criar_bencao(
+    id_pc_jogando INTEGER;
+    vida_bencao INTEGER;
+    mana_bencao INTEGER;
+    atk_base_bencao INTEGER;
+    arm_base_bencao INTEGER;
+    operacao_bencao CHAR(3))
+  AS $$
+DECLARE
+  bencao_pc INTEGER;
+BEGIN
+  -- Verifica se o personagem principal já tem uma benção
+  SELECT bencao_pc INTO bencao_pc FROM PC WHERE id_pc = id_pc_jogando;
+  
+  IF bencao_pc IS NOT NULL THEN
+    RAISE NOTICE 'Personagem já tem uma benção';
+  ELSE 
+    -- Insere uma nova benção na tabela bencao
+    INSERT INTO bencao (id_pc, vida, mana, atk_base, arm_base, operacao)
+    VALUES (id_pc_jogando, vida_bencao, mana_bencao, atk_base_bencao, arm_base_bencao, operacao_bencao);
+
+    -- Atualiza a bencao do personagem principal
+    UPDATE PC
+    SET bencao_pc = (SELECT id_bencao FROM bencao ORDER BY id_bencao DESC LIMIT 1)
+    WHERE id_pc = id_pc_jogando;
+
+    RAISE NOTICE 'Benção adicionada com sucesso!';
+  END IF;
+EXCEPTION
+  WHEN UNIQUE_VIOLATION THEN
+    RAISE NOTICE 'Já existe uma benção com essa operação';
+  WHEN OTHERS THEN
+    RAISE NOTICE 'Um erro ocorreu';
+END;
+$$ LANGUAGE plpgsql;
