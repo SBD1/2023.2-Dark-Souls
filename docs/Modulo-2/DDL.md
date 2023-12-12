@@ -82,8 +82,10 @@ CREATE TABLE Pocao_Mana (
 9) Cria a tabela Instancia Item. 
 ```sql
 CREATE TABLE Instancia_Item (
+    id_instancia = SERIAL,
     id_invent INT NOT NULL,
     id_item INT NOT NULL,
+    PRIMARY KEY (id_instancia),
     FOREIGN KEY (id_invent) REFERENCES Inventario(id_invent),
     FOREIGN KEY (id_item) REFERENCES Item(id_item)
 );
@@ -118,12 +120,14 @@ CREATE TABLE NPC (
 ```sql
 CREATE TABLE Mercador (
     id_mercador SERIAL,
-    id_invent INT NOT NULL,
+    inventario INT NOT NULL,
+    sala INT NOT NULL,
     ouro INT NOT NULL,
     orbs INT NOT NULL,
     PRIMARY KEY (id_mercador),
     FOREIGN KEY (id_mercador) REFERENCES NPC(id_npc),
-    FOREIGN KEY (id_invent) REFERENCES Inventario(id_invent),
+    FOREIGN KEY (inventario) REFERENCES Inventario(id_invent),
+    FOREIGN KEY (sala) REFERENCES Sala(id_sala)
 );
 ```
 14) Cria a tabela Inimigo Comum.
@@ -146,6 +150,7 @@ CREATE TABLE Inimigo_Comum (
 CREATE TABLE chefe (
     id_chefe SERIAL,
     arma INT NOT NULL,
+    sala INT NOT NULL,
     vida INT NOT NULL,
     nivel INT NOT NULL,
     atk_base INT NOT NULL,
@@ -154,7 +159,8 @@ CREATE TABLE chefe (
     orb_drop INT NOT NULL,
     PRIMARY KEY (id_chefe),
     FOREIGN KEY (id_chefe) REFERENCES NPC(id_npc),
-    FOREIGN KEY (arma) REFERENCES Arma(id_arma)
+    FOREIGN KEY (arma) REFERENCES Arma(id_arma),
+    FOREIGN KEY (sala) REFERENCES Sala(id_sala)
 );
 ```
 16) Cria a tabela PC.
@@ -174,21 +180,30 @@ CREATE TABLE PC (
     FOREIGN KEY (armadura) REFERENCES Armadura(id_armadura),
     FOREIGN KEY (arma) REFERENCES Arma(id_arma),
     FOREIGN KEY (sala) REFERENCES Sala(id_sala),
-    FOREIGN KEY (id_npc) REFERENCES Personagem(id_personagem)
+    FOREIGN KEY (id_pc) REFERENCES Personagem(id_personagem)
 );
 ```
-17) Cria a tabela Instancia NPC.
+17) Cria a tabela Instancia Inimigo Comum.
 ```sql
-CREATE TABLE Instancia_NPC (
-    id_npc INT NOT NULL,
-    id_sala INT NOT NULL,
-    FOREIGN KEY (id_npc) REFERENCES NPC (id_npc),
+CREATE TABLE Instancia_Inim_Comum (
+    id_instancia SERIAL,
+    id_inm_com INT NOT NULL,
+    sala INT NOT NULL,
+    vida INT NOT NULL,
+    NIVEL INT NOT NULL,
+    atk_base INT NOT NULL,
+    arm_base INT NOT NULL,
+    ouro_drop INT NOT NULL,
+    orb_drop INT NOT NULL,
+    PRIMARY KEY (id_instancia),
+    FOREIGN KEY (id_inm_com) REFERENCES Inimigo_Comum (id_inm_com),
     FOREIGN KEY (id_sala) REFERENCES Sala (id_sala)
 );
 ```
 18) Cria a tabela Bencao. 
 ```sql
 CREATE TABLE bencao (
+    id_bencao SERIAL,
     id_pc INT NOT NULL,
     vida INT NOT NULL,
     mana INT NOT NULL,
@@ -233,12 +248,32 @@ CREATE TABLE Viagem_Destino (
 ```sql
 CREATE TABLE mundo (
     id_mundo SERIAL,
+    nome CHAR(40),
     id_anterior INT,
     id_proximo INT,
     dificuldade INT NOT NULL,
     PRIMARY KEY (id_mundo),
     FOREIGN KEY (id_anterior) REFERENCES Mundo (id_mundo),
     FOREIGN KEY (id_proximo) REFERENCES Mundo (id_mundo)
+);
+```
+23) Cria a tabela Viagem Origem Mundo.
+```sql
+CREATE TABLE Viagem_Origem (
+    id_mundo INT NOT NULL,
+    id_mundo_origem INT NOT NULL,
+    FOREIGN KEY (id_mundo) REFERENCES Mundo(id_mundo),
+    FOREIGN KEY (id_mundo_origem) REFERENCES Mundo(id_mundo)
+);
+```
+24) Cria a tabela Viagem Destino Mundo.
+```sql
+CREATE TABLE Viagem_Destino (
+    id_mundo INT NOT NULL,
+    id_mundo_destino INT NOT NULL,
+    PRIMARY KEY (id_mundo),
+    FOREIGN KEY (id_mundo) REFERENCES Mundo(id_mundo),
+    FOREIGN KEY (id_mundo_origem) REFERENCES Mundo(id_mundo)
 );
 ```
 

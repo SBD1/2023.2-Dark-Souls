@@ -74,7 +74,7 @@ CREATE TABLE Consumivel (
 
 CREATE TABLE Pocao_Vida (
     id_pocao_vida SERIAL,
-    val_vida INT NOT NULL UNIQUE,
+    val_vida INT,
     PRIMARY KEY (id_pocao_vida),
     FOREIGN KEY (id_pocao_vida) REFERENCES Consumivel(id_cons)
       ON DELETE CASCADE
@@ -83,7 +83,7 @@ CREATE TABLE Pocao_Vida (
 
 CREATE TABLE Pocao_Mana (
     id_pocao_mana SERIAL,
-    val_mana INT NOT NULL UNIQUE,
+    val_mana INT,
     PRIMARY KEY (id_pocao_mana),
     FOREIGN KEY (id_pocao_mana) REFERENCES Consumivel(id_cons)
       ON DELETE CASCADE
@@ -194,7 +194,6 @@ CREATE TABLE Inimigo_Comum (
     arm_base INT NOT NULL,
     ouro_drop INT NOT NULL,
     orb_drop INT NOT NULL,
-    UNIQUE (vida, nivel),
     PRIMARY KEY (id_inm_com),
     FOREIGN KEY (id_inm_com) REFERENCES NPC(id_npc)
       ON DELETE CASCADE
@@ -271,11 +270,12 @@ CREATE TABLE Instancia_Inim_Comum (
 CREATE TABLE Bencao (
     id_bencao SERIAL,
     id_pc INT NOT NULL,
+    em_uso BOOLEAN,
     vida INT NOT NULL,
     mana INT NOT NULL,
     atk_base INT NOT NULL,
     arm_base INT NOT NULL,
-    operacao CHAR(3) UNIQUE NOT NULL,
+    operacao CHAR(3),
     PRIMARY KEY (id_bencao),
     FOREIGN KEY (id_pc) REFERENCES PC(id_pc)
       ON DELETE CASCADE
